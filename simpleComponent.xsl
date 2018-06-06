@@ -19,7 +19,7 @@
         
         <html>
             <head>
-                <title>UI example component</title>
+                <title>UI example component test</title>
                 <link rel="stylesheet" href="style.css" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             </head>
