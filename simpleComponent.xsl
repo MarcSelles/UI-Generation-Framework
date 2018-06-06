@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:UML="http://www.eclipse.org/uml2/4.0.0/UML"
+    xmlns:func="http://exslt.org/functions"
+    exclude-result-prefixes="xs UML func"
+    version="2.0">
+    <xsl:import href="variables.xsl"/>
+    <xsl:output method="html" />
+    
+<!--    <xsl:variable name="root" select="UML:Model"/>-->
+    
+    <xsl:template name="simpleComponent" match="/">
+        <xsl:variable name="test">
+            <xsl:call-template name="func:fullOrShortText">
+                <xsl:with-param name="label">label1;label2;label3</xsl:with-param>
+            </xsl:call-template>
+        </xsl:variable>
+        
+        <html>
+            <head>
+                <title>UI example component</title>
+                <link rel="stylesheet" href="style.css" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            </head>
+            <body>
+                <xsl:variable name="full-textMedewerkerVoornaam">Dit is <xsl:value-of select="$medewerkerVoornaam"/>, en dit zijn zijn gegevens:</xsl:variable>
+                <xsl:variable name="full-textGeboortedatum">Geboren op <xsl:value-of select="$medewerkerGeboortedatum"/></xsl:variable>
+                <xsl:variable name="full-textTeamNaam">Onderdeel van het team "<xsl:value-of select="$teamNaam"/>"</xsl:variable>
+                <xsl:variable name="full-textTotaalAantal">Dit jaar recht op <xsl:value-of select="$verlofTotaalAantal"/> verlofdagen</xsl:variable>
+                <xsl:variable name="full-textBeschikbaarAantal">Waarvan er nog <xsl:value-of select="$verlofBeschikbaarAantal"/> verlofdagen over zijn</xsl:variable>
+                
+                <xsl:call-template name="func:fullOrShortText">
+                    <xsl:with-param name="fullText">
+                        <xsl:value-of select="$full-textMedewerkerVoornaam"/>;<xsl:value-of select="$full-textGeboortedatum"/>;<xsl:value-of select="$full-textTeamNaam"/>;<xsl:value-of select="$full-textTotaalAantal"/>;<xsl:value-of select="$full-textBeschikbaarAantal"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="shortText">
+                        <xsl:value-of select="$medewerkerVoornaam"/>;<xsl:value-of select="$medewerkerGeboortedatum"/>;<xsl:value-of select="$teamNaam"/>;<xsl:value-of select="$verlofTotaalAantal"/>;<xsl:value-of select="$verlofBeschikbaarAantal"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="label">Voornaam;Geboortedatum;Teamnaam; Totaal aantal verlofdagen; Beschikbaar aantal verlofdagen</xsl:with-param>
+                </xsl:call-template>
+            </body>
+        </html>
+    </xsl:template>
+    
+</xsl:stylesheet>
