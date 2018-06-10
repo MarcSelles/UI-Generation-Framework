@@ -30,7 +30,7 @@
                 <xsl:variable name="full-textTotaalAantal">Dit jaar recht op <xsl:value-of select="$verlofTotaalAantal"/> verlofdagen</xsl:variable>
                 <xsl:variable name="full-textBeschikbaarAantal">Waarvan er nog <xsl:value-of select="$verlofBeschikbaarAantal"/> verlofdagen over zijn</xsl:variable>
                 
-                <xsl:call-template name="func:fullOrShortText">
+                <xsl:call-template name="fullOrShortText">
                     <xsl:with-param name="fullText">
                         <xsl:value-of select="$full-textMedewerkerVoornaam"/>;<xsl:value-of select="$full-textGeboortedatum"/>;<xsl:value-of select="$full-textTeamNaam"/>;<xsl:value-of select="$full-textTotaalAantal"/>;<xsl:value-of select="$full-textBeschikbaarAantal"/>
                     </xsl:with-param>
