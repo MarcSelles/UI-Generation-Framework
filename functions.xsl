@@ -66,8 +66,11 @@
     <xsl:template name="multipleOptions">
         <xsl:param name="labels"/>
         
+        <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
+        
         <!-- Tab links -->
         <div class="tab">
+            
             <button class="tablinks">London</button>
             <button class="tablinks">Paris</button>
             <button class="tablinks">Tokyo</button>
