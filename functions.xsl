@@ -69,7 +69,7 @@
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         
         <!-- Tab links -->
-        <div class="tab">
+        <div class="tab full-text">
             <xsl:for-each select="$tokenizeLabel">
                 <button class="tablinks"><xsl:value-of select="."/></button>
             </xsl:for-each>
