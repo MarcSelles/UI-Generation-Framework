@@ -70,7 +70,9 @@
         
         <!-- Tab links -->
         <div class="tab">
-            
+            <xsl:for-each select="$tokenizeLabel">
+                
+            </xsl:for-each>
             <button class="tablinks">London</button>
             <button class="tablinks">Paris</button>
             <button class="tablinks">Tokyo</button>
