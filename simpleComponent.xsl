@@ -35,7 +35,9 @@
                     </xsl:with-param>
                     <xsl:with-param name="label">Voornaam;Geboortedatum;Teamnaam; Totaal aantal verlofdagen; Beschikbaar aantal verlofdagen</xsl:with-param>
                 </xsl:call-template>
-                <xsl:call-template name="multipleOptions"/>
+                <xsl:call-template name="multipleOptions">
+                    <xsl:with-param name="labels">tab1;tab2;tab3;tab4;tab5</xsl:with-param>
+                </xsl:call-template>
             </body>
         </html>
     </xsl:template>
