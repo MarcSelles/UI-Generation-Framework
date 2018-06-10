@@ -11,11 +11,7 @@
 <!--    <xsl:variable name="root" select="UML:Model"/>-->
     
     <xsl:template name="simpleComponent" match="/">
-        <xsl:variable name="test">
-            <xsl:call-template name="func:fullOrShortText">
-                <xsl:with-param name="label">label1;label2;label3</xsl:with-param>
-            </xsl:call-template>
-        </xsl:variable>
+        
         
         <html>
             <head>
