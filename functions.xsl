@@ -42,7 +42,7 @@
         @param shortText:   De verkleinde text die getoond wordt bij een kleinder scherm
         @param label:       Het label die boven de verkleinde text komt te staan
     -->
-    <xsl:template name="func:fullOrShortText">
+    <xsl:template name="fullOrShortText">
         <xsl:param name="fullText"/>
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
@@ -62,4 +62,7 @@
         </xsl:for-each>
   
     </xsl:template>
+
+    <xsl:template name="Multiple options"></xsl:template>
+
 </xsl:stylesheet>
