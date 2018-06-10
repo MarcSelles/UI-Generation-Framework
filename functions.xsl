@@ -74,6 +74,12 @@
                 <button class="tablinks"><xsl:value-of select="."/></button>
             </xsl:for-each>
         </div>
+        
+        <select>
+            <xsl:for-each select="$tokenizeLabel">
+                <<option value="{.}"><xsl:value-of select="."/></option>>
+            </xsl:for-each>
+        </select>
     </xsl:template>
 
 </xsl:stylesheet>
