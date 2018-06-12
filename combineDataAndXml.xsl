@@ -158,17 +158,29 @@
         <value><xsl:value-of select="$csv2xml/data/Medewerker.datumInFunctie"/></value>
         <xsl:copy-of select="."/>
     </xsl:template>
-    
-    <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $HANDTEKENING]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.handtekening"/></value>
-        <xsl:copy-of select="."/>
-    </xsl:template>
-    
+
     <xsl:template match="packagedElement[@name = $TEAM]/ownedAttribute[@name = $NAAM]/*">
         <value><xsl:value-of select="$csv2xml/data/Team.naam"/></value>
         <xsl:copy-of select="."/>
     </xsl:template>
+
+    <xsl:template match="packagedElement[@name = $FUNCTIE]/ownedAttribute[@name = $NAAM]/*">
+        <value><xsl:value-of select="$csv2xml/data/Functie.naam"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
     
+    <xsl:template match="packagedElement[@name = $FUNCTIE]/ownedAttribute[@name = $NIVEAU]/*">
+        <value><xsl:value-of select="$csv2xml/data/Functie.niveau"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    
+    <xsl:template match="packagedElement[@name = $ROL]/ownedAttribute[@name = $NAAM]/*">
+        <value><xsl:value-of select="$csv2xml/data/Rol.naam"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $MINIMALEBEZETTING]/*">
         <value><xsl:value-of select="$csv2xml/data/Teambezetting.minimaleBezetting"/></value>
         <xsl:copy-of select="."/>
