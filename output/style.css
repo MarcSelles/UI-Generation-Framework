@@ -5,6 +5,11 @@
 
 @media only screen and (max-width: 600px) {
     .short-text { display: inline-block; }
+    .full-text, .importance { display: none; }
+}
+
+@media only screen and (max-width: 600px) {
+    .short-text { display: inline-block; }
     .full-text { display: none; }
 }
 
@@ -44,3 +49,4 @@
     border: 1px solid #ccc;
     border-top: none;
 }
+
