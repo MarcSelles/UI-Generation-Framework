@@ -40,9 +40,9 @@
     <xsl:variable name="DATUMINFUNCTIE" select="'datumInFunctie'"/>
     <xsl:variable name="HANDTEKENING" select="'handtekening'"/>
     
-    <xsl:variable name=""/>
-    
     <xsl:variable name="NAAM" select="'naam'"/>
+    <xsl:variable name="NIVEAU" select="'niveau'"/>
+
     <xsl:variable name="MINIMALEBEZETTING" select="'minimaleBezetting'"/>
     <xsl:variable name="BUFFER" select="'buffer'"/>
     <xsl:variable name="TOTAALAANTAL" select="'totaalAantal'"/>
