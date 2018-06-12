@@ -17,6 +17,10 @@
 	font-size: 12px;
 }
 
+img.rounded {
+    border-radius: 50%;
+}
+
 
 /* Style the tab */
 .tab {
