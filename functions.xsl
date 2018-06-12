@@ -94,8 +94,9 @@
     <xsl:template name="text">
         <xsl:param name="content"/>
         <xsl:param name="importance" select="1"/>
+        <xsl:param name="style"/>
         
-        <p class="importance{$importance}"><xsl:value-of select="$content"/></p>
+        <p class="importance{$importance} {$style}"><xsl:value-of select="$content"/></p>
     </xsl:template>
     
     <xsl:template name="image">
