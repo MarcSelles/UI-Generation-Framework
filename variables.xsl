@@ -14,6 +14,8 @@
     <xsl:variable name="medewerkerVoornaam" select="func:getValue($MEDEWERKER, $VOORNAAM)"/>
     <xsl:variable name="medewerkerGeboortedatum" select="func:formatDate(func:getValue($MEDEWERKER, $GEBOORTEDATUM))"/>
     <xsl:variable name="medewerkerAchternaam" select="func:getValue($MEDEWERKER, $ACHTERNAAM)"/>
+    <xsl:variable name="medewerkerFoto" select="func:getValue($MEDEWERKER, $FOTO)"/>
+    <xsl:variable name="medewerkerContactUren" select="func:getValue($MEDEWERKER, $AANTALCONTACTUREN)"/>
     
     <xsl:variable name="teamNaam" select="func:getValue($TEAM, $NAAM)"/>
     
