@@ -39,7 +39,7 @@
                     <xsl:with-param name="labels">tab1;tab2;tab3;tab4;tab5</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content"><xsl:value-of select="concat($medewerkerVoornaam, $medewerkerAchternaam)"/></xsl:with-param>
+                    <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
                     <xsl:with-param name="importance">1</xsl:with-param>
                 </xsl:call-template>
             </body>
