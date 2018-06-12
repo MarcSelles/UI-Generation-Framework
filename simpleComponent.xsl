@@ -38,6 +38,11 @@
                 <xsl:call-template name="multipleOptions">
                     <xsl:with-param name="labels">tab1;tab2;tab3;tab4;tab5</xsl:with-param>
                 </xsl:call-template>
+                <xsl:call-template name="image">
+                    <xsl:with-param name="source">../image/Marc Selles.png</xsl:with-param>
+                    <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
+                    <xsl:with-param name="importance">1</xsl:with-param>
+                </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
                     <xsl:with-param name="importance">1</xsl:with-param>
@@ -54,6 +59,8 @@
                     <xsl:with-param name="content">Accorderen verlof</xsl:with-param>
                     <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
+                
+                
             </body>
         </html>
     </xsl:template>
