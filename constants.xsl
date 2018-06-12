@@ -9,6 +9,7 @@
     <xsl:variable name="TEAMBEZETTING" select="'Teambezetting'"/>
     <xsl:variable name="VERLOFDAGEN" select="'Verlofdagen'"/>
     <xsl:variable name="FUNCTIE" select="'Functie'"/>
+    <xsl:variable name="ROL" select="'Rol'"/>
     
     <xsl:variable name="ID" select="'ID'"/>
     <xsl:variable name="VOORNAAM" select="'voornaam'"/>
@@ -42,7 +43,7 @@
     
     <xsl:variable name="NAAM" select="'naam'"/>
     <xsl:variable name="NIVEAU" select="'niveau'"/>
-
+    
     <xsl:variable name="MINIMALEBEZETTING" select="'minimaleBezetting'"/>
     <xsl:variable name="BUFFER" select="'buffer'"/>
     <xsl:variable name="TOTAALAANTAL" select="'totaalAantal'"/>
