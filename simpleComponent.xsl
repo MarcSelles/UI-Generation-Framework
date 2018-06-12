@@ -47,18 +47,22 @@
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
                     <xsl:with-param name="importance">1</xsl:with-param>
+                    <xsl:with-param name="style">center</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
                     <xsl:with-param name="importance">2</xsl:with-param>
+                    <xsl:with-param name="style">center</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
                     <xsl:with-param name="importance">3</xsl:with-param>
+                    <xsl:with-param name="style">center</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="$rolNaam"/>
                     <xsl:with-param name="importance">3</xsl:with-param>
+                    <xsl:with-param name="style">center</xsl:with-param>
                 </xsl:call-template>
                
             </body>
