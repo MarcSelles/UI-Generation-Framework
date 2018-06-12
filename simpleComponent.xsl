@@ -57,7 +57,8 @@
                     <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content" select="$rolNaam">                    <xsl:with-param name="importance">3</xsl:with-param>
+                    <xsl:with-param name="content" select="$rolNaam"/>
+                    <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
                 
                 
