@@ -93,8 +93,9 @@
         <xsl:param name="source"/>
         <xsl:param name="name"/>
         <xsl:param name="importance"/>
+        <xsl:param name="style"/>
         
-        <img class="importance{$importance}" src="{$source}" alt="{$name}"/>
+        <img class="importance{$importance} {$style}" src="{$source}" alt="{$name}"/>
     </xsl:template>
 
 </xsl:stylesheet>
