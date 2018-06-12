@@ -25,7 +25,9 @@
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $VOORNAAM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.voornaam"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.voornaam">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
