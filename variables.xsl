@@ -25,6 +25,7 @@
     <xsl:variable name="teamNaam" select="func:getValue($TEAM, $NAAM)"/>
     
     <xsl:variable name="teamBezettingMin" select="func:getValue($TEAMBEZETTING, $MINIMALEBEZETTING)"/>
+    <xsl:variable name="teamBezettingBuffer" select="func:getValue($TEAMBEZETTING, $BUFFER)"/>
     
     <xsl:variable name="verlofTotaalAantal" select="func:getValue($VERLOFDAGEN, $TOTAALAANTAL)"/>
     <xsl:variable name="verlofBeschikbaarAantal" select="func:getValue($VERLOFDAGEN, $TOTAALBESCHIKBAAR)"/>
