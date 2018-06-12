@@ -17,7 +17,14 @@
     <xsl:variable name="medewerkerFoto" select="func:getValue($MEDEWERKER, $FOTO)"/>
     <xsl:variable name="medewerkerContactUren" select="func:getValue($MEDEWERKER, $AANTALCONTACTUREN)"/>
     
+    <xsl:variable name="functieNaam" select="func:getValue($FUNCTIE, $NAAM)"/>
+    <xsl:variable name="functieNiveau" select="func:getValue($FUNCTIE, $NIVEAU)"/>
+    
+    <xsl:variable name="rolNaam" select="func:getValue($ROL, $NAAM)"/>
+    
     <xsl:variable name="teamNaam" select="func:getValue($TEAM, $NAAM)"/>
+    
+    <xsl:variable name="teamBezettingMin" select="func:getValue($TEAMBEZETTING, $MINIMALEBEZETTING)"/>
     
     <xsl:variable name="verlofTotaalAantal" select="func:getValue($VERLOFDAGEN, $TOTAALAANTAL)"/>
     <xsl:variable name="verlofBeschikbaarAantal" select="func:getValue($VERLOFDAGEN, $TOTAALBESCHIKBAAR)"/>
