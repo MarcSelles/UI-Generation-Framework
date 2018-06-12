@@ -13,6 +13,10 @@
     .full-text { display: none; }
 }
 
+.importance2 {
+	font-size: 12px;
+}
+
 
 /* Style the tab */
 .tab {
