@@ -9,6 +9,9 @@
     .full-text, .importance3 { display: none; }
 }
 
+.center {
+    text-align: center;
+}
 
 .importance2, .importance3{
 	font-size: 12px;
