@@ -2,13 +2,6 @@
 
 .short-text { display: none; }
 
-
-@media only screen and (max-width: 600px) {
-    .short-text { display: inline-block; }
-    .dropdown { display: block; }
-    .full-text, .importance3 { display: none; }
-}
-
 .center {
 	display: block;
     margin-left: auto;
@@ -64,5 +57,11 @@ img.rounded {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .short-text { display: inline-block; }
+    .dropdown { display: block; }
+    .full-text, .importance3 { display: none; }
 }
 
