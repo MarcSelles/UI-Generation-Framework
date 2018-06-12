@@ -8,6 +8,7 @@
     <xsl:variable name="TEAM" select="'Team'"/>
     <xsl:variable name="VERLOFDAGEN" select="'Verlofdagen'"/>
     
+    <xsl:variable name="ID" select="'ID'"/>
     <xsl:variable name="VOORNAAM" select="'voornaam'"/>
     <xsl:variable name="TUSSENNAMEN" select="'tussennamen'"/>
     <xsl:variable name="ACHTERNAAM" select="'achternaam'"/>
