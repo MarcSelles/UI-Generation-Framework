@@ -13,7 +13,7 @@
     .full-text { display: none; }
 }
 
-.importance2 {
+.importance2, .importance3{
 	font-size: 12px;
 }
 
