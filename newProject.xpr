@@ -10,11 +10,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>simpleComponent.xsl</String>
+                                    <String>bezettingUI.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>dataToComponent</String>
+                                        <String>domainModelXMI</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -30,6 +30,21 @@
                                 <field name="scenarioIds">
                                     <list>
                                         <String>domainModelXMI</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>simpleComponent.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>dataToComponent</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
