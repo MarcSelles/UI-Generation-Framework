@@ -42,6 +42,7 @@
                     <xsl:with-param name="source">../image/Marc Selles.png</xsl:with-param>
                     <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
                     <xsl:with-param name="importance">1</xsl:with-param>
+                    <xsl:with-param name="style">rounded</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
