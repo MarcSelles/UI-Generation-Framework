@@ -44,7 +44,15 @@
                 </xsl:call-template>
                 <xsl:call-template name="text">
                     <xsl:with-param name="content">36 uur</xsl:with-param>
-                    <xsl:with-param name="importance">1</xsl:with-param>
+                    <xsl:with-param name="importance">2</xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content">Functioneel ontwerper</xsl:with-param>
+                    <xsl:with-param name="importance">3</xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content">Accorderen verlof</xsl:with-param>
+                    <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
             </body>
         </html>
