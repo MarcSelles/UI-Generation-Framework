@@ -19,6 +19,12 @@
         </xsl:copy>
     </xsl:template>
     
+    <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $ID]/*">
+        <value><xsl:value-of select="$csv2xml/data/Medewerker.ID"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $VOORNAAM]/*">
         <value><xsl:value-of select="$csv2xml/data/Medewerker.voornaam"/></value>
         <xsl:copy-of select="."/>
