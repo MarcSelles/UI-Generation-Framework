@@ -87,7 +87,14 @@
         <xsl:param name="importance" select="1"/>
         
         <p class="importance{$importance}"><xsl:value-of select="$content"/></p>
+    </xsl:template>
+    
+    <xsl:template name="image">
+        <xsl:param name="source"/>
+        <xsl:param name="name"/>
+        <xsl:param name="importance"/>
         
+        <img class="importance{$importance}" src="{$source}" alt="{$name}"/>
     </xsl:template>
 
 </xsl:stylesheet>
