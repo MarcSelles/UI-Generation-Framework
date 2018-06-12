@@ -174,6 +174,10 @@
         <xsl:copy-of select="."/>
     </xsl:template>
     
+    <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $BUFFER]/*">
+        <value><xsl:value-of select="$csv2xml/data/Teambezetting.buffer"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
     
     <xsl:template match="packagedElement[@name = $VERLOFDAGEN]/ownedAttribute[@name = $TOTAALAANTAL]/*">
         <value><xsl:value-of select="$csv2xml/data/Verlofdagen.totaalAantal"/></value>
