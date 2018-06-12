@@ -5,13 +5,10 @@
 
 @media only screen and (max-width: 600px) {
     .short-text { display: inline-block; }
+    .dropdown { display: block; }
     .full-text, .importance3 { display: none; }
 }
 
-@media only screen and (max-width: 600px) {
-    .short-text { display: inline-block; }
-    .full-text { display: none; }
-}
 
 .importance2, .importance3{
 	font-size: 12px;
@@ -20,7 +17,6 @@
 img.rounded {
     border-radius: 50%;
 }
-
 
 /* Style the tab */
 .tab {
