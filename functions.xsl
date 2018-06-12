@@ -40,7 +40,7 @@
         <xsl:param name="style"/>
         
         <div class="{$style}">
-            <xsl:value-of select="$content"/>
+            <xsl:copy-of select="$content"/>
         </div>
     </xsl:template>
     
