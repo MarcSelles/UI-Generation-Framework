@@ -5,7 +5,7 @@
 
 @media only screen and (max-width: 600px) {
     .short-text { display: inline-block; }
-    .full-text, .importance { display: none; }
+    .full-text, .importance3 { display: none; }
 }
 
 @media only screen and (max-width: 600px) {
