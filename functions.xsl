@@ -35,6 +35,15 @@
         <xsl:value-of select="$elementRoot[@name=$element]/ownedAttribute[@name = $attribute]/value"/>
     </xsl:function>
     
+    <xsl:template name="item">
+        <xsl:param name="content"/>
+        <xsl:param name="style"/>
+        
+        <div class="{$style}">
+            <xsl:value-of select="$content"/>
+        </div>
+    </xsl:template>
+    
     <!--
         Bij een groot scherm wordt de volledige text getoond, anders het label en de korte text.
         Meerdere paragrafen worden onderscheiden door een ;
