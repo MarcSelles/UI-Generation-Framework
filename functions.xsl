@@ -81,5 +81,13 @@
             </xsl:for-each>
         </select>
     </xsl:template>
+    
+    <xsl:template name="text">
+        <xsl:param name="content"/>
+        <xsl:param name="importance" select="1"/>
+        
+        
+        
+    </xsl:template>
 
 </xsl:stylesheet>
