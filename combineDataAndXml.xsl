@@ -24,7 +24,6 @@
         <xsl:copy-of select="."/>
     </xsl:template>
     
-    
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $VOORNAAM]/*">
         <value><xsl:value-of select="$csv2xml/data/Medewerker.voornaam"/></value>
         <xsl:copy-of select="."/>
@@ -169,6 +168,12 @@
         <value><xsl:value-of select="$csv2xml/data/Team.naam"/></value>
         <xsl:copy-of select="."/>
     </xsl:template>
+    
+    <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $MINIMALEBEZETTING]/*">
+        <value><xsl:value-of select="$csv2xml/data/Teambezetting.minimaleBezetting"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
     
     <xsl:template match="packagedElement[@name = $VERLOFDAGEN]/ownedAttribute[@name = $TOTAALAANTAL]/*">
         <value><xsl:value-of select="$csv2xml/data/Verlofdagen.totaalAantal"/></value>
