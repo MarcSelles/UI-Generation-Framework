@@ -61,7 +61,7 @@
                     <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
                 
-                
+                <xsl:value-of select="$medewerkerFoto"/>
             </body>
         </html>
     </xsl:template>
