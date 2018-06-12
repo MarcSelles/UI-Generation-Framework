@@ -174,12 +174,10 @@
         <xsl:copy-of select="."/>
     </xsl:template>
     
-    
     <xsl:template match="packagedElement[@name = $ROL]/ownedAttribute[@name = $NAAM]/*">
         <value><xsl:value-of select="$csv2xml/data/Rol.naam"/></value>
         <xsl:copy-of select="."/>
     </xsl:template>
-    
 
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $MINIMALEBEZETTING]/*">
         <value><xsl:value-of select="$csv2xml/data/Teambezetting.minimaleBezetting"/></value>
