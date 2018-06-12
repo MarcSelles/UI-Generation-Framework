@@ -36,10 +36,10 @@
                     <xsl:with-param name="label">Voornaam;Geboortedatum;Teamnaam; Totaal aantal verlofdagen; Beschikbaar aantal verlofdagen</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="multipleOptions">
-                    <xsl:with-param name="labels">tab1;tab2;tab3;tab4;tab5</xsl:with-param>
+                    <xsl:with-param name="labels">vakantie;kind;langdurig;bijzonder</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="image">
-                    <xsl:with-param name="source">../image/Marc Selles.png</xsl:with-param>
+                    <xsl:with-param name="source" select="$medewerkerFoto"/>
                     <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
                     <xsl:with-param name="importance">1</xsl:with-param>
                     <xsl:with-param name="style">rounded</xsl:with-param>
@@ -49,16 +49,15 @@
                     <xsl:with-param name="importance">1</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content">36 uur</xsl:with-param>
+                    <xsl:with-param name="content" select="$medewerkerContactUren"/>
                     <xsl:with-param name="importance">2</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content">Functioneel ontwerper</xsl:with-param>
+                    <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
                     <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content">Accorderen verlof</xsl:with-param>
-                    <xsl:with-param name="importance">3</xsl:with-param>
+                    <xsl:with-param name="content" select="$rolNaam">                    <xsl:with-param name="importance">3</xsl:with-param>
                 </xsl:call-template>
                 
                 
