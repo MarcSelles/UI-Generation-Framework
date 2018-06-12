@@ -8,6 +8,7 @@
     <xsl:variable name="TEAM" select="'Team'"/>
     <xsl:variable name="TEAMBEZETTING" select="'Teambezetting'"/>
     <xsl:variable name="VERLOFDAGEN" select="'Verlofdagen'"/>
+    <xsl:variable name="FUNCTIE" select="'Functie'"/>
     
     <xsl:variable name="ID" select="'ID'"/>
     <xsl:variable name="VOORNAAM" select="'voornaam'"/>
@@ -38,8 +39,12 @@
     <xsl:variable name="DATUMINDIENST" select="'datumInDienst'"/>
     <xsl:variable name="DATUMINFUNCTIE" select="'datumInFunctie'"/>
     <xsl:variable name="HANDTEKENING" select="'handtekening'"/>
+    
+    <xsl:variable name=""/>
+    
     <xsl:variable name="NAAM" select="'naam'"/>
     <xsl:variable name="MINIMALEBEZETTING" select="'minimaleBezetting'"/>
+    <xsl:variable name="BUFFER" select="'buffer'"/>
     <xsl:variable name="TOTAALAANTAL" select="'totaalAantal'"/>
     <xsl:variable name="TOTAALBESCHIKBAAR" select="'beschikbaarAantal'"/>
     
