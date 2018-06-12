@@ -49,7 +49,7 @@
                     <xsl:with-param name="importance">1</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
-                    <xsl:with-param name="content" select="$medewerkerContactUren"/>
+                    <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
                     <xsl:with-param name="importance">2</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="text">
