@@ -86,7 +86,7 @@
         <xsl:param name="content"/>
         <xsl:param name="importance" select="1"/>
         
-        <p><xsl:value-of select="$content"/></p>
+        <p class="importance{$importance}"><xsl:value-of select="$content"/></p>
         
     </xsl:template>
 
