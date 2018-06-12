@@ -75,7 +75,7 @@
             </xsl:for-each>
         </div>
         
-        <select class="short-text">
+        <select class="dropdown">
             <xsl:for-each select="$tokenizeLabel">
                 <option value="{.}"><xsl:value-of select="."/></option>
             </xsl:for-each>
