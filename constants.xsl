@@ -6,6 +6,7 @@
     
     <xsl:variable name="MEDEWERKER" select="'Medewerker'"/>
     <xsl:variable name="TEAM" select="'Team'"/>
+    <xsl:variable name="TEAMBEZETTING" select="'Teambezetting'"/>
     <xsl:variable name="VERLOFDAGEN" select="'Verlofdagen'"/>
     
     <xsl:variable name="ID" select="'ID'"/>
