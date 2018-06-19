@@ -108,4 +108,12 @@
         <img class="importance{$importance} {$style}" src="{$source}" alt="{$name}" width="60%" height="auto"/>
     </xsl:template>
 
+    <xsl:template name="labelValue">
+        <xsl:param name="label"/>
+        <xsl:param name="value"/>
+        <xsl:param name="importance"/>
+        
+        <p><b><xsl:value-of select="$label"/>: </b><xsl:value-of select="$value"/></p>
+    </xsl:template>
+
 </xsl:stylesheet>
