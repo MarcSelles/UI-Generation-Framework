@@ -64,9 +64,9 @@
         <xsl:for-each select="$tokenizeFullText">
             <xsl:variable name="position" select="position()"/>
             <p>
-                <span class="full-text"><xsl:value-of select="."/></span>
-                <span class="short-text"><b><xsl:value-of select="$tokenizeLabel[$position]"/></b></span><br/>
-                <span class="short-text"><xsl:value-of select="$tokenizeShortText[$position]"/></span>
+                <span class="full-text"><xsl:copy-of select="."/></span>
+                <span class="short-text"><b><xsl:copy-of select="$tokenizeLabel[$position]"/></b></span><br/>
+                <span class="short-text"><xsl:copy-of select="$tokenizeShortText[$position]"/></span>
             </p>
         </xsl:for-each>
   
