@@ -62,6 +62,7 @@
         
         <xsl:copy-of select="$fullText"/>
         <xsl:for-each select="$tokenizeFullText">
+            <xsl:copy-of select="."></xsl:copy-of>
             <xsl:variable name="position" select="position()"/>
             <p>
                 <span class="full-text"><xsl:copy-of select="."/></span>
