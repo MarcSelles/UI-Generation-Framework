@@ -68,7 +68,7 @@ span{
 }
 
 @media only screen and (max-width: 600px) {
-    .short-text { display: inline-block; }
+    .short-text { display: block; }
     .dropdown { display: block; }
     .full-text, .importance3 { display: none; }
 }
