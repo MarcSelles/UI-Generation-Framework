@@ -63,6 +63,10 @@ img.rounded {
     display: none;
 }
 
+span{
+    display: block;
+}
+
 @media only screen and (max-width: 600px) {
     .short-text { display: inline-block; }
     .dropdown { display: block; }
