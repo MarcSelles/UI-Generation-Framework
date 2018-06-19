@@ -58,7 +58,7 @@
         
         <span class="full-text"><xsl:copy-of select="$fullText"/></span>
         <span class="short-text"><b><xsl:copy-of select="$label"/></b></span>
-        <span class="short-text"><xsl:copy-of select="$shortText"/></span>
+        <span class="short-text short-text-value"><xsl:copy-of select="$shortText"/></span>
   
     </xsl:template>
 
