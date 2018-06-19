@@ -116,7 +116,10 @@
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         <xsl:variable name="tokenizeValue" select="tokenize($values,';')"/>
         
-        <p><b><xsl:value-of select="$label"/>: </b><xsl:value-of select="$value"/></p>
+        <xsl:for-each select="$tokenizeLabel">
+            <xsl:variable name="position" select="position()"/>
+            <p><b><xsl:value-of select="$label"/>: </b><xsl:value-of select="$value"/></p>
+        </xsl:for-each>
     </xsl:template>
 
 </xsl:stylesheet>
