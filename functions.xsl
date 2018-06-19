@@ -56,11 +56,11 @@
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
         
-        <xsl:variable name="tokenizeFullText" select="tokenize(<xsl:copy-of select="$fullText"/>,';')"/>
+        <xsl:variable name="tokenizeFullText" select="tokenize($fullText,';')"/>
         <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
         <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
         
-        
+        <xsl:copy-of select="$fullText"/>
         <xsl:for-each select="$tokenizeFullText">
             <xsl:variable name="position" select="position()"/>
             <p>
