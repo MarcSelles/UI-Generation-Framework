@@ -56,12 +56,7 @@
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
         
-        <xsl:variable name="tokenizeFullText">
-            <xsl:call-template name="tokenizeString">
-                <xsl:with-param name="list" select="$fullText"/>
-                <xsl:with-param name="delimiter">;</xsl:with-param>
-            </xsl:call-template>
-        </xsl:variable>
+        <xsl:variable name="tokenizeFullText" select="tokenize($fullText,';')"/>
         <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
         <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
         
@@ -125,36 +120,5 @@
             <p><b><xsl:value-of select="."/>: </b><xsl:value-of select="$tokenizeValue[$position]"/></p>            
         </xsl:for-each>
     </xsl:template>
-
-    <!--############################################################-->
-    <!--## Template to tokenize strings                           ##-->
-    <!--############################################################-->
-    <xsl:template name="tokenizeString">
-        <!--passed template parameter -->
-        <xsl:param name="list"/>
-        <xsl:param name="delimiter"/>
-        <xsl:choose>
-            <xsl:when test="contains($list, $delimiter)">               
-                <!-- get everything in front of the first delimiter -->
-                <xsl:copy-of select="substring-before($list,$delimiter)"/>
-                <xsl:call-template name="tokenizeString">
-                    <!-- store anything left in another variable -->
-                    <xsl:with-param name="list" select="substring-after($list,$delimiter)"/>
-                    <xsl:with-param name="delimiter" select="$delimiter"/>
-                </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:choose>
-                    <xsl:when test="$list = ''">
-                        <xsl:text/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:copy-of select="$list"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>  
-    
 
 </xsl:stylesheet>
