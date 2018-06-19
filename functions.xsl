@@ -109,9 +109,12 @@
     </xsl:template>
 
     <xsl:template name="labelValue">
-        <xsl:param name="label"/>
-        <xsl:param name="value"/>
+        <xsl:param name="labels"/>
+        <xsl:param name="values"/>
         <xsl:param name="importance"/>
+        
+        <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
+        <xsl:variable name="tokenizeValue" select="tokenize($values,';')"/>
         
         <p><b><xsl:value-of select="$label"/>: </b><xsl:value-of select="$value"/></p>
     </xsl:template>
