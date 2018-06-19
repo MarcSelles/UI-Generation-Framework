@@ -61,13 +61,11 @@
                 <xsl:with-param name="list" select="$fullText"/>
                 <xsl:with-param name="delimiter">;</xsl:with-param>
             </xsl:call-template>
-        </xsl:variable> select="tokenize($fullText,';')"
+        </xsl:variable>
         <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
         <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
         
-        <xsl:copy-of select="$fullText"/>
         <xsl:for-each select="$tokenizeFullText">
-            <xsl:copy-of select="."></xsl:copy-of>
             <xsl:variable name="position" select="position()"/>
             <p>
                 <span class="full-text"><xsl:copy-of select="."/></span>
