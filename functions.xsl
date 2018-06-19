@@ -56,7 +56,7 @@
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
         
-        <span class="full-text"><xsl:copy-of select="$fullText"/></span>
+        <span class="full-text"><xsl:copy-of select="$fullText"/></span><br/>
         <span class="short-text"><b><xsl:copy-of select="$label"/></b></span><br/>
         <span class="short-text"><xsl:copy-of select="$shortText"/></span>
   
@@ -86,7 +86,7 @@
         <xsl:param name="importance" select="1"/>
         <xsl:param name="style"/>
         
-        <p class="importance{$importance} {$style}"><xsl:value-of select="$content"/></p>
+        <p class="importance{$importance} {$style}"><xsl:copy-of select="$content"/></p>
     </xsl:template>
     
     <xsl:template name="image">
