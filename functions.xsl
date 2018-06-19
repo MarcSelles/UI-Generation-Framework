@@ -56,7 +56,7 @@
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
         
-        <xsl:variable name="tokenizeFullText" select="tokenize($fullText,';')"/>
+        <xsl:variable name="tokenizeFullText" select="tokenize(<xsl:copy-of select="$fullText"/>,';')"/>
         <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
         <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
         
