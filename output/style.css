@@ -72,12 +72,13 @@ span{
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
+     /* Green */
     }
 
 @media only screen and (max-width: 600px) {
     .short-text { display: block; }
     .dropdown { display: block; }
     .full-text, .importance3 { display: none; }
+    .button {background-color: #4CAF50}
 }
 
