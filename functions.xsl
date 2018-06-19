@@ -112,6 +112,18 @@
         </xsl:for-each>
     </xsl:template>
 
+    <xsl:template name="button">
+        <xsl:param name="text"/>
+        
+        <button class="button"><xsl:copy-of select="$text"></button>
+    </xsl:template>
+
+
+
+
+
+
+
     <!-- Back-up -->
     <!--<xsl:template name="fullOrShortText">
         <xsl:param name="fullText"/>
