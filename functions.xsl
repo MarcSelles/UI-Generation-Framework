@@ -121,4 +121,25 @@
         </xsl:for-each>
     </xsl:template>
 
+    <!-- Back-up -->
+    <!--<xsl:template name="fullOrShortText">
+        <xsl:param name="fullText"/>
+        <xsl:param name="shortText"/>
+        <xsl:param name="label"/>
+        
+        <xsl:variable name="tokenizeFullText" select="tokenize($fullText,';')"/>
+        <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
+        <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
+        
+        <xsl:for-each select="$tokenizeFullText">
+            <xsl:variable name="position" select="position()"/>
+            <p>
+                <span class="full-text"><xsl:copy-of select="."/></span>
+                <span class="short-text"><b><xsl:copy-of select="$tokenizeLabel[$position]"/></b></span><br/>
+                <span class="short-text"><xsl:copy-of select="$tokenizeShortText[$position]"/></span>
+            </p>
+        </xsl:for-each>
+        
+    </xsl:template>-->
+
 </xsl:stylesheet>
