@@ -2,6 +2,10 @@
 
 .short-text { display: none; }
 
+.short-text-value {
+    margin-bottom: 10px;
+}
+
 .center {
 	display: block;
     margin-left: auto;
