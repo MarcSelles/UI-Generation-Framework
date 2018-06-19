@@ -71,6 +71,10 @@ span{
     display: block;
 }
 
+.button {
+    background-color: #4CAF50; /* Green */
+    }
+
 @media only screen and (max-width: 600px) {
     .short-text { display: block; }
     .dropdown { display: block; }
