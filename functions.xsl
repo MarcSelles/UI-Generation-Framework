@@ -56,11 +56,9 @@
         <xsl:param name="shortText"/>
         <xsl:param name="label"/>
         
-        <p>
-            <span class="full-text"><xsl:copy-of select="$fullText"/></span>
-            <span class="short-text"><b><xsl:copy-of select="$label"/></b></span><br/>
-            <span class="short-text"><xsl:copy-of select="$shortText"/></span>
-        </p>
+        <span class="full-text"><xsl:copy-of select="$fullText"/></span>
+        <span class="short-text"><b><xsl:copy-of select="$label"/></b></span><br/>
+        <span class="short-text"><xsl:copy-of select="$shortText"/></span>
   
     </xsl:template>
 
