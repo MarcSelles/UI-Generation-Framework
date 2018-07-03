@@ -186,6 +186,17 @@
         <xsl:copy-of select="."/>
     </xsl:template>
 
+    <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $DATUMBEGIN]/*">
+        <value><xsl:value-of select="$csv2xml/data/Teambezetting.datumBegin"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $DATUMEINDE]/*">
+        <value><xsl:value-of select="$csv2xml/data/Teambezetting.datumEinde"/></value>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $MINIMALEBEZETTING]/*">
         <value><xsl:value-of select="$csv2xml/data/Teambezetting.minimaleBezetting"/></value>
         <xsl:copy-of select="."/>

@@ -10,26 +10,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>verlofUI.xsl</String>
+                                    <String>combineDataAndXml.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>dataToComponent</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XML</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>simpleComponent.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>dataToComponent</String>
+                                        <String>domainModelXMI</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -55,11 +40,26 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>combineDataAndXml.xsl</String>
+                                    <String>verlofUI.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>domainModelXMI</String>
+                                        <String>dataToComponent</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>simpleComponent.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>dataToComponent</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -185,7 +185,7 @@
                                     <String>${currentFileURL}</String>
                                 </field>
                                 <field name="inputXMLURL">
-                                    <String>${pdu}/xml/innovaga.xmi.xml</String>
+                                    <String>${pdu}/xml/innovaga.xmi</String>
                                 </field>
                                 <field name="defaultScenario">
                                     <Boolean>false</Boolean>

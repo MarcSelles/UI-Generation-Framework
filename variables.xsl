@@ -24,6 +24,8 @@
     
     <xsl:variable name="teamNaam" select="func:getValue($TEAM, $NAAM)"/>
     
+    <xsl:variable name="teamBezettingBeginDatum" select="func:getValue($TEAMBEZETTING, $DATUMBEGIN)"/>
+    <xsl:variable name="teamBezettingEindDatum" select="func:getValue($TEAMBEZETTING, $DATUMEINDE)"/>
     <xsl:variable name="teamBezettingMin" select="func:getValue($TEAMBEZETTING, $MINIMALEBEZETTING)"/>
     <xsl:variable name="teamBezettingBuffer" select="func:getValue($TEAMBEZETTING, $BUFFER)"/>
     

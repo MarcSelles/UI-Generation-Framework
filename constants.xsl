@@ -44,8 +44,11 @@
     <xsl:variable name="NAAM" select="'naam'"/>
     <xsl:variable name="NIVEAU" select="'niveau'"/>
     
+    <xsl:variable name="DATUMBEGIN" select="'datumBegin'"/>
+    <xsl:variable name="DATUMEINDE" select="'datumEinde'"/>
     <xsl:variable name="MINIMALEBEZETTING" select="'minimaleBezetting'"/>
     <xsl:variable name="BUFFER" select="'buffer'"/>
+    
     <xsl:variable name="TOTAALAANTAL" select="'totaalAantal'"/>
     <xsl:variable name="TOTAALBESCHIKBAAR" select="'beschikbaarAantal'"/>
     
