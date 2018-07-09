@@ -17,10 +17,10 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 <script>
                     GSS_CONFIG = {
-                    worker: "bower_components/gss/dist/worker.js"
+                    worker: "worker.js"
                     }
                 </script>
-                <script src="bower_components/gss/dist/gss.js"></script>
+                <script src="gss.js"></script>
                 <style type="text/gss">
                     
                 </style>
