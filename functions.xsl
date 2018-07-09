@@ -104,19 +104,32 @@
         <xsl:param name="values"/>
         <xsl:param name="importance"/>
         
-        <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
-        <xsl:variable name="tokenizeValue" select="tokenize($values,';')"/>
         
-        <xsl:for-each select="$tokenizeLabel">
-            <xsl:variable name="position" select="position()"/>
-            <p><b><xsl:value-of select="."/>: </b><xsl:value-of select="$tokenizeValue[$position]"/></p>            
-        </xsl:for-each>
+        <p><b><xsl:copy-of select="$labels"/>: </b><xsl:copy-of select="$values"/></p>            
+    </xsl:template>
+    
+    <xsl:template name="labelValueVertical">
+        <xsl:param name="labels"/>
+        <xsl:param name="values"/>        
+        
+        <b><xsl:copy-of select="$labels"/></b><br/>
+            <xsl:copy-of select="$values"/>            
     </xsl:template>
 
     <xsl:template name="button">
         <xsl:param name="text"/>
+        <xsl:param name="styleId"/>
+        <xsl:param name="disabled" select="false()"/>
         
-        <button class="button"><xsl:copy-of select="$text"/></button>
+        <xsl:choose>
+            <xsl:when test="$disabled">
+                <button class="button" id="{$styleId}" disabled="disabled" ><xsl:copy-of select="$text"/></button>
+            </xsl:when>
+            <xsl:otherwise>
+                <button class="button" id="{$styleId}" onclick="button()"><xsl:copy-of select="$text"/></button>
+            </xsl:otherwise>
+        </xsl:choose>
+        
     </xsl:template>
 
     <xsl:template name="title">
@@ -125,6 +138,7 @@
         <h1><xsl:copy-of select="$content"/></h1>
     </xsl:template>
 
+    
 
 
 

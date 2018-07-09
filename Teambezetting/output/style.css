@@ -135,7 +135,7 @@ img.rounded {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 46px;
+    padding: 14px 16px;
     transition: 0.3s;
 }
 
@@ -148,14 +148,6 @@ img.rounded {
 .tab button.active {
     background-color: #ccc;
 }
-
-.tablinks {
-    font-size:18px;
-}
-
-/*.tablinks + .tablinks{
-    margin-left:30px;
-}*/
 
 /* Style the tab content */
 .tabcontent {
@@ -176,17 +168,7 @@ span{
 .button {
      /* Green */
     }
-
-table {
-    border-spacing:25px;
-}
-
-.full-text{
-    font-size:20px;
-    line-height:30px;
-}
-
-/* Scroll-bar */
+    
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 7px;
@@ -197,14 +179,10 @@ table {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }    
 
-/*
-/\* Bezetting: Width - Importance 5 *\/
+/* Width - Importance 5 */
 @media only screen and (max-width:1150px) {
     .bezetting {
         flex-basis: calc(100% / 3);
-    }
-    .imp5{
-    	display:block;
     }
 }
 
@@ -225,19 +203,16 @@ table {
 }
     
 
-/\* Bezetting: Width - Importance 4 *\/
+/* Width - Importance 4 */
 @media only screen and (max-width: 1040px) {
     .requirements .short-text {
         display: block; 
         margin-top:10px;
     }
     .requirements .full-text { display: none; }
-    .imp4{
-    	display:block;
-    }
 }
 
-/\* Bezetting: Width - Importance 3 *\/
+/* Width - Importance 3 */
 @media only screen and (max-width: 800px) {
     .requirements {font-size: 18px;}
     .teambezetting {
@@ -259,28 +234,18 @@ table {
     .teambox {order:2;}
     
     h1 {font-size: 1.5em;}
-    .imp3{
-    	display:block;
-    }
 }
 
-/\* Bezetting: Width - Importance 2 *\/
+/* Width - Importance 2 */
 @media only screen and (max-width: 430px) {
     .bezetting {min-height: 0;}
     .member {min-width: 100px;}
     .importance3 { display: none; }
-    .imp2{
-    	display:block;
-    }
 }
 
 @media only screen and (max-height: 490px) {
     .teambezetting {height:80%}
-    /\*.team {
+    /*.team {
         flex-direction: column;
-    }*\/
-}*/
-
-/*a:contains(18) {
-    
-}*/
+    }*/
+}

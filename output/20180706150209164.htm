@@ -1,0 +1,82 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Verlof</title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"><script>
+                    GSS_CONFIG = {
+                    worker: "bower_components/gss/dist/worker.js"
+                    }
+                </script><script src="bower_components/gss/dist/gss.js"></script><style type="text/gss"></style><link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><script>
+                    $( function() {
+                    var dateFormat = "mm/dd/yy",
+                    from = $( "#from" )
+                    .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 2
+                    })
+                    .on( "change", function() {
+                    to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                    to = $( "#to" ).datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 2
+                    })
+                    .on( "change", function() {
+                    from.datepicker( "option", "maxDate", getDate( this ) );
+                    });
+                    
+                    function getDate( element ) {
+                    var date;
+                    try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                    } catch( error ) {
+                    date = null;
+                    }
+                    
+                    return date;
+                    }
+                    } );
+                </script></head>
+   <body>
+      <div class="sidenav"><a href="#">Navigation</a></div>
+      <div class="main">
+         <div class="tab full-text"><button class="tablinks">Vakantie</button><button class="tablinks">Langdurig</button><button class="tablinks">Privé</button><button class="tablinks">Bijzonder</button><button class="tablinks">Kinder</button></div><select class="dropdown">
+            <option value="Vakantie">Vakantie</option>
+            <option value="Langdurig">Langdurig</option>
+            <option value="Privé">Privé</option>
+            <option value="Bijzonder">Bijzonder</option>
+            <option value="Kinder">Kinder</option></select><p class="importance1 "><span class="full-text ">
+               Hoi Marc Selles, <br>Dit jaar heb je recht op <b>25 vakantiedagen / 200 vakantieuren.</b></span><span class="short-text "><b>Totaal aantal vakantiedagen/-uren</b></span><span class="short-text short-text-value ">25 dagen / 200 uren
+               </span><span class="full-text ">
+               Tot nu toe heb je <b>5 vakantiedagen / 
+                  40 vakantieuren</b> opgenomen.
+               </span><span class="short-text "><b>Verbruikt aantal vakantiedagen/-uren: </b></span><span class="short-text short-text-value ">5 dagen / 
+               40 uren
+               </span><span class="full-text ">
+               Dit betekent dat je nog <b>20 vakantiedagen / 
+                  160 vakantieuren</b> over hebt.
+               </span><span class="short-text "><b>Beschikbaar aantal vakantiedagen/-uren: </b></span><span class="short-text short-text-value ">20 dagen / 
+               160 uren
+               </span></p>
+         <form>
+            <table>
+               <tr>
+                  <th><b>Begindatum</b><br><input type="text" id="from" name="from"></th>
+                  <th>-</th>
+                  <th><b>Einddatum</b><br><input type="text" id="to" name="to"></th>
+               </tr>
+            </table><button class="button" id="button">Aanvragen</button></form><script>
+                    if(!$('input').val()){
+                    console.log("Test1");
+                    $('#button').hide();
+                    }
+                    else {
+                    console.log("Test2");
+                    $('#button').show();
+                    }
+                </script></div>
+   </body>
+</html>
