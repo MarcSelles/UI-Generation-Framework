@@ -245,6 +245,7 @@ span{
 
 @media only screen and (max-height: 490px) {
     .teambezetting {height:80%}
+    .importance3 {display: none}
     /*.team {
         flex-direction: column;
     }*/
