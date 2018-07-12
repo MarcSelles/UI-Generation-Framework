@@ -225,7 +225,7 @@ table {
 }
     
 
-/\* Bezetting: Width - Importance 4 *\/
+/*/\* Bezetting: Width - Importance 4 *\/*/
 @media only screen and (max-width: 1040px) {
     .requirements .short-text {
         display: block; 
@@ -237,7 +237,7 @@ table {
     }
 }
 
-/\* Bezetting: Width - Importance 3 *\/
+/*/\* Bezetting: Width - Importance 3 *\/*/
 @media only screen and (max-width: 800px) {
     .requirements {font-size: 18px;}
     .teambezetting {
@@ -264,7 +264,7 @@ table {
     }
 }
 
-/\* Bezetting: Width - Importance 2 *\/
+/*/\* Bezetting: Width - Importance 2 *\/*/
 @media only screen and (max-width: 430px) {
     .bezetting {min-height: 0;}
     .member {min-width: 100px;}
