@@ -98,7 +98,7 @@ img.rounded {
 }
 
 /* Only show one row with 4 elements. Let user scroll for next elements*/
-.bezetting {
+.columns {
 	flex-basis:calc(100% / 4);
 	margin-bottom:20px;
 	margin-top:20px;
