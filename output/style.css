@@ -199,7 +199,7 @@ table {
 
 
 /*Bezetting: Width - Importance 5*/
-@media only screen and (max-width:1150px) {
+/*@media only screen and (max-width:1150px) {
     .bezetting {
         flex-basis: calc(100% / 3);
     }
@@ -222,11 +222,11 @@ table {
     .bezetting {
         flex-basis: 100%;
     }
-}
+}*/
     
 
 /*/\* Bezetting: Width - Importance 4 *\/*/
-@media only screen and (max-width: 1040px) {
+/*@media only screen and (max-width: 1040px) {
     .requirements .short-text {
         display: block; 
         margin-top:10px;
@@ -235,10 +235,10 @@ table {
     .imp4{
     	display:block;
     }
-}
+}*/
 
 /*/\* Bezetting: Width - Importance 3 *\/*/
-@media only screen and (max-width: 800px) {
+/*@media only screen and (max-width: 800px) {
     .requirements {font-size: 18px;}
     .teambezetting {
         flex-direction: row;
@@ -262,10 +262,10 @@ table {
     .imp3{
     	display:block;
     }
-}
+}*/
 
 /*/\* Bezetting: Width - Importance 2 *\/*/
-@media only screen and (max-width: 430px) {
+/*@media only screen and (max-width: 430px) {
     .bezetting {min-height: 0;}
     .member {min-width: 100px;}
     .importance3 { display: none; }
@@ -279,7 +279,7 @@ table {
     /\*.team {
         flex-direction: column;
     }*\/
-}*/
+}*/*/
 
 /*a:contains(18) {
     
