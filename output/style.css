@@ -198,8 +198,17 @@ table {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }    
 
+@media only screen and (max-width:700px) {
+    .bezetting {
+        flex-basis: calc(100% / 3);
+    }
+    .imp5{
+        display:block;
+    }
+}
 
-/*Bezetting: Width - Importance 5*/
+
+/*Bezetting: Width - Importance 5
 /*@media only screen and (max-width:1150px) {
     .bezetting {
         flex-basis: calc(100% / 3);
