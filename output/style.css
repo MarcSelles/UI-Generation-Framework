@@ -5,7 +5,7 @@ body {
 /* Fake navigation */
 .sidenav {
     height: 100%;
-    width: 170px;
+    width: 12%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -32,7 +32,8 @@ body {
 
 /* Main content */
 .main {
-    margin-left: 170px; /* Same as the width of the sidenav */
+    float:right;
+    width: 88%; /* Same as the width of the sidenav */
 }
 
 /* Header */
