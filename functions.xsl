@@ -38,8 +38,9 @@
     <xsl:template name="item">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
+        <xsl:param name="id"/>
         
-        <div class="{$style}">
+        <div class="{$style}" id="{$id}">
             <xsl:copy-of select="$content"/>
         </div>
     </xsl:template>
