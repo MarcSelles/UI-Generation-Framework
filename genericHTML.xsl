@@ -20,10 +20,7 @@
                     worker: "worker.js"
                     }
                 </script>
-                <script src="gss.js"></script>
-                <style type="text/gss">
-                    
-                </style>
+                <script type="text/javascript" src="scripts/responsive.js"></script>
                 <xsl:copy-of select="$additionalHead"></xsl:copy-of>
             </head>
             <body>
