@@ -100,7 +100,7 @@ img.rounded {
 /* Only show one row with 4 elements. Let user scroll for next elements*/
 .columns {
 	flex-basis:calc(100% / 4);
-	margin-bottom:20px;
+
 	margin-top:20px;
 	overflow: -moz-scrollbars-vertical;
     overflow: scroll;
@@ -115,7 +115,7 @@ img.rounded {
     box-sizing:content-box;
     border-radius: 25px;
     padding-top:10px;
-    min-width: 200px;
+    min-width: 210px;
     max-width: 300px;
     flex-basis: auto; /* default value */
     flex-grow: 1;
