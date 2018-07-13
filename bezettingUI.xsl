@@ -23,6 +23,15 @@
                     <xsl:with-param name="style">teambezetting</xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:call-template name="item">
+                            <xsl:with-param name="style">period</xsl:with-param>
+                            <xsl:with-param name="content">
+                                <xsl:call-template name="text">
+                                    <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:formatDate($teamBezettingBeginDatum), ' - '), func:formatDate($teamBezettingEindDatum))"/></xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:with-param>
+                        </xsl:call-template>
+                        
+                        <xsl:call-template name="item">
                             <xsl:with-param name="style">requirements minbez</xsl:with-param>
                             <xsl:with-param name="content">
                                 <xsl:call-template name="fullOrShortText">
@@ -35,15 +44,6 @@
                                     </xsl:with-param>
                                     <xsl:with-param name="label">Minimale bezetting</xsl:with-param>
                                     <xsl:with-param name="shortText" select="concat($teamBezettingMin, ' uur')"/>
-                                </xsl:call-template>
-                            </xsl:with-param>
-                        </xsl:call-template>
-                        
-                        <xsl:call-template name="item">
-                            <xsl:with-param name="style">requirements period</xsl:with-param>
-                            <xsl:with-param name="content">
-                                <xsl:call-template name="text">
-                                    <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:formatDate($teamBezettingBeginDatum), ' - '), func:formatDate($teamBezettingEindDatum))"/></xsl:with-param>
                                 </xsl:call-template>
                             </xsl:with-param>
                         </xsl:call-template>
