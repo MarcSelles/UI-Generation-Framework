@@ -51,7 +51,6 @@ h1 {
 
 /* First row of flex-box*/
 .requirements {
-    flex-basis:calc(100% / 3);
     text-align: center;
     font-size:22px;
 }
@@ -99,8 +98,6 @@ img.rounded {
 
 /* Only show one row with 4 elements. Let user scroll for next elements*/
 .columns {
-	flex-basis:calc(100% / 4);
-
 	margin-top:20px;
 	overflow: -moz-scrollbars-vertical;
     overflow: scroll;
