@@ -72,10 +72,12 @@
                                     <xsl:with-param name="style">team</xsl:with-param>
                                     <xsl:with-param name="content">
                                         <xsl:call-template name="item">
-                                            <xsl:with-param name="style">bezetting</xsl:with-param>
+                                            <xsl:with-param name="style">columns</xsl:with-param>
+                                            <xsl:with-param name="id">firstParent</xsl:with-param>
                                             <xsl:with-param name="content">
                                                 <xsl:call-template name="item">
                                                     <xsl:with-param name="style">member center</xsl:with-param>
+                                                    <xsl:with-param name="id">firstChild</xsl:with-param>
                                                     <xsl:with-param name="content">
                                                         <xsl:call-template name="image">
                                                             <xsl:with-param name="source" select="$medewerkerFoto"/>
@@ -104,7 +106,7 @@
                                             </xsl:with-param>
                                         </xsl:call-template>
                                         <xsl:call-template name="item">
-                                            <xsl:with-param name="style">bezetting</xsl:with-param>
+                                            <xsl:with-param name="style">columns</xsl:with-param>
                                             <xsl:with-param name="content">
                                                 <xsl:call-template name="item">
                                                     <xsl:with-param name="style">member center</xsl:with-param>
@@ -140,7 +142,7 @@
                                             </xsl:with-param>
                                         </xsl:call-template>
                                         <xsl:call-template name="item">
-                                            <xsl:with-param name="style">bezetting</xsl:with-param>
+                                            <xsl:with-param name="style">columns</xsl:with-param>
                                             <xsl:with-param name="content">
                                                 <xsl:call-template name="item">
                                                     <xsl:with-param name="style">member center</xsl:with-param>
@@ -176,7 +178,7 @@
                                             </xsl:with-param>
                                         </xsl:call-template>
                                         <xsl:call-template name="item">
-                                            <xsl:with-param name="style">bezetting</xsl:with-param>
+                                            <xsl:with-param name="style">columns</xsl:with-param>
                                             <xsl:with-param name="content">
                                                 <xsl:call-template name="item">
                                                     <xsl:with-param name="style">member center</xsl:with-param>
@@ -212,7 +214,7 @@
                                             </xsl:with-param>
                                         </xsl:call-template>
                                         <xsl:call-template name="item">
-                                            <xsl:with-param name="style">bezetting</xsl:with-param>
+                                            <xsl:with-param name="style">columns</xsl:with-param>
                                             <xsl:with-param name="content">
                                                 <xsl:call-template name="item">
                                                     <xsl:with-param name="style">member center</xsl:with-param>
