@@ -101,6 +101,7 @@ img.rounded {
 	margin-top:20px;
 	overflow: -moz-scrollbars-vertical;
     overflow: scroll;
+    max-height: 290px;
 /*    flex: 0 0 299px;*/
 /*	overflow-y: scroll;*/
 }
