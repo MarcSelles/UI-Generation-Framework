@@ -1,0 +1,40 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Bezetting</title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"><script type="text/javascript" src="scripts/responsive.js"></script></head>
+   <body>
+      <div class="sidenav"><a href="#">Navigation</a></div>
+      <div class="main">
+         <segment id="1">Teambezetting</segment>
+         <group id="14" type="span"></group>
+         <segment id="2" parent="14" relname="sequence">MBI students</segment>
+         <segment id="3" parent="14" relname="sequence">10-07-2018 - 29-07-2018</segment>
+         <group id="12" type="multinuc" parent="14" relname="sequence"></group>
+         <segment id="4" parent="12" relname="sequence">Minimale Bezetting:160 uur</segment>
+         <segment id="5" parent="12" relname="sequence">Buffer: 30 uur</segment>
+         <group id="13" type="multinuc" parent="14" relname="sequence"></group>
+         <segment id="6" parent="13" relname="sequence">../images/047m.jpg</segment>
+         <segment id="7" parent="13" relname="sequence">Henk Smits</segment>
+         <segment id="8" parent="13" relname="sequence">40 uur</segment>
+         <group id="11" type="multinuc" parent="13" relname="sequence"></group>
+         <segment id="9" parent="11" relname="joint">Junior Functioneel ontwerper</segment>
+         <segment id="10" parent="11" relname="joint">Poortwachter</segment>test
+         <segment id="1">Teambezetting</segment>
+         <group id="14" type="span"></group>
+         <segment id="2" parent="14" relname="sequence">MBI students</segment>
+         <segment id="3" parent="14" relname="sequence">10-07-2018 - 29-07-2018</segment>
+         <group id="12" type="multinuc" parent="14" relname="sequence"></group>
+         <segment id="4" parent="12" relname="sequence">Minimale Bezetting:160 uur</segment>
+         <segment id="5" parent="12" relname="sequence">Buffer: 30 uur</segment>
+         <group id="13" type="multinuc" parent="14" relname="sequence"></group>
+         <segment id="6" parent="13" relname="sequence">../images/047m.jpg</segment>
+         <segment id="7" parent="13" relname="sequence">Henk Smits</segment>
+         <segment id="8" parent="13" relname="sequence">40 uur</segment>
+         <group id="11" type="multinuc" parent="13" relname="sequence"></group>
+         <segment id="9" parent="11" relname="joint">Junior Functioneel ontwerper</segment>
+         <segment id="10" parent="11" relname="joint">Poortwachter</segment>
+      </div>
+   </body>
+</html>

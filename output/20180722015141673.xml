@@ -1,0 +1,11 @@
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Bezetting</title>
+      <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"><script type="text/javascript" src="scripts/responsive.js"></script></head>
+   <body>
+      <div class="sidenav"><a href="#">Navigation</a></div>
+      <div class="main">jo</div>
+   </body>
+</html>

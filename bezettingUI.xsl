@@ -19,6 +19,11 @@
                     <xsl:with-param name="content">Teambezetting</xsl:with-param>
                 </xsl:call-template>
                 
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content"><xsl:value-of select="$teamNaam"/></xsl:with-param>
+                    <xsl:with-param name="style">center teamnaam</xsl:with-param>
+                </xsl:call-template>
+                
                 <xsl:call-template name="item">
                     <xsl:with-param name="style">teambezetting</xsl:with-param>
                     <xsl:with-param name="content">
@@ -80,175 +85,68 @@
                                                     <xsl:with-param name="id">firstChild</xsl:with-param>
                                                     <xsl:with-param name="content">
                                                         <xsl:call-template name="image">
-                                                            <xsl:with-param name="source" select="$medewerkerFoto"/>
-                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
+                                                            <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,1)"/>
+                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,1), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,1))"/></xsl:with-param>
                                                             <xsl:with-param name="importance">1</xsl:with-param>
                                                             <xsl:with-param name="style">rounded</xsl:with-param>
                                                         </xsl:call-template>
                                                         <xsl:call-template name="text">
-                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
+                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,1), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,1))"/></xsl:with-param>
                                                             <xsl:with-param name="importance">1</xsl:with-param>
                                                         </xsl:call-template>
                                                         <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
+                                                            <xsl:with-param name="content" select="concat(func:getValue($MEDEWERKER, $AANTALCONTACTUREN,1), ' uur')"/>
                                                             <xsl:with-param name="importance">2</xsl:with-param>
                                                         </xsl:call-template>
                                                         <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
+                                                            <xsl:with-param name="content" select="concat(concat(func:getValue($FUNCTIE, $NIVEAU,1), ' '), func:getValue($FUNCTIE, $NAAM,1))"/>
                                                             <xsl:with-param name="importance">3</xsl:with-param>
                                                         </xsl:call-template>
                                                         <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="$rolNaam"/>
+                                                            <xsl:with-param name="content" select="func:getValue($ROL, $NAAM,1)"/>
                                                             <xsl:with-param name="importance">3</xsl:with-param>
                                                         </xsl:call-template>
                                                     </xsl:with-param>
                                                 </xsl:call-template>
                                             </xsl:with-param>
                                         </xsl:call-template>
-                                        <xsl:call-template name="item">
-                                            <xsl:with-param name="style">columns</xsl:with-param>
-                                            <xsl:with-param name="content">
+                                        <xsl:variable name="test" select="$elementRoot[@name=$MEDEWERKER]/ownedAttribute[@name = $VOORNAAM]/value"/>
+                                        <xsl:for-each select="$test">
+                                            <xsl:if test="position() != 1">
                                                 <xsl:call-template name="item">
-                                                    <xsl:with-param name="style">member center</xsl:with-param>
+                                                    <xsl:with-param name="style">columns</xsl:with-param>
                                                     <xsl:with-param name="content">
-                                                        <xsl:call-template name="image">
-                                                            <xsl:with-param name="source" select="$medewerkerFoto"/>
-                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">rounded center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
-                                                            <xsl:with-param name="importance">2</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="$rolNaam"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
+                                                        <xsl:call-template name="item">
+                                                            <xsl:with-param name="style">member center</xsl:with-param>
+                                                            <xsl:with-param name="content">
+                                                                <xsl:call-template name="image">
+                                                                    <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,position())"/>
+                                                                    <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,position()), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,position()))"/></xsl:with-param>
+                                                                    <xsl:with-param name="importance">position()</xsl:with-param>
+                                                                    <xsl:with-param name="style">rounded</xsl:with-param>
+                                                                </xsl:call-template>
+                                                                <xsl:call-template name="text">
+                                                                    <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,position()), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,position()))"/></xsl:with-param>
+                                                                    <xsl:with-param name="importance">position()</xsl:with-param>
+                                                                </xsl:call-template>
+                                                                <xsl:call-template name="text">
+                                                                    <xsl:with-param name="content" select="concat(func:getValue($MEDEWERKER, $AANTALCONTACTUREN,position()), ' uur')"/>
+                                                                    <xsl:with-param name="importance">2</xsl:with-param>
+                                                                </xsl:call-template>
+                                                                <xsl:call-template name="text">
+                                                                    <xsl:with-param name="content" select="concat(concat(func:getValue($FUNCTIE, $NIVEAU,position()), ' '), func:getValue($FUNCTIE, $NAAM,position()))"/>
+                                                                    <xsl:with-param name="importance">3</xsl:with-param>
+                                                                </xsl:call-template>
+                                                                <xsl:call-template name="text">
+                                                                    <xsl:with-param name="content" select="func:getValue($ROL, $NAAM,position())"/>
+                                                                    <xsl:with-param name="importance">3</xsl:with-param>
+                                                                </xsl:call-template>
+                                                            </xsl:with-param>
                                                         </xsl:call-template>
                                                     </xsl:with-param>
                                                 </xsl:call-template>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
-                                        <xsl:call-template name="item">
-                                            <xsl:with-param name="style">columns</xsl:with-param>
-                                            <xsl:with-param name="content">
-                                                <xsl:call-template name="item">
-                                                    <xsl:with-param name="style">member center</xsl:with-param>
-                                                    <xsl:with-param name="content">
-                                                        <xsl:call-template name="image">
-                                                            <xsl:with-param name="source" select="$medewerkerFoto"/>
-                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">rounded center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
-                                                            <xsl:with-param name="importance">2</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="$rolNaam"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                    </xsl:with-param>
-                                                </xsl:call-template>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
-                                        <xsl:call-template name="item">
-                                            <xsl:with-param name="style">columns</xsl:with-param>
-                                            <xsl:with-param name="content">
-                                                <xsl:call-template name="item">
-                                                    <xsl:with-param name="style">member center</xsl:with-param>
-                                                    <xsl:with-param name="content">
-                                                        <xsl:call-template name="image">
-                                                            <xsl:with-param name="source" select="$medewerkerFoto"/>
-                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">rounded center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
-                                                            <xsl:with-param name="importance">2</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="$rolNaam"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                    </xsl:with-param>
-                                                </xsl:call-template>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
-                                        <xsl:call-template name="item">
-                                            <xsl:with-param name="style">columns</xsl:with-param>
-                                            <xsl:with-param name="content">
-                                                <xsl:call-template name="item">
-                                                    <xsl:with-param name="style">member center</xsl:with-param>
-                                                    <xsl:with-param name="content">
-                                                        <xsl:call-template name="image">
-                                                            <xsl:with-param name="source" select="$medewerkerFoto"/>
-                                                            <xsl:with-param name="name"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">rounded center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content"><xsl:value-of select="concat(concat($medewerkerVoornaam, ' '), $medewerkerAchternaam)"/></xsl:with-param>
-                                                            <xsl:with-param name="importance">1</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat($medewerkerContactUren, ' uur')"/>
-                                                            <xsl:with-param name="importance">2</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="concat(concat($functieNiveau, ' '), $functieNaam)"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                        <xsl:call-template name="text">
-                                                            <xsl:with-param name="content" select="$rolNaam"/>
-                                                            <xsl:with-param name="importance">3</xsl:with-param>
-                                                            <xsl:with-param name="style">center</xsl:with-param>
-                                                        </xsl:call-template>
-                                                    </xsl:with-param>
-                                                </xsl:call-template>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
+                                            </xsl:if>
+                                        </xsl:for-each>
                                     </xsl:with-param>
                                 </xsl:call-template>
                             </xsl:with-param>

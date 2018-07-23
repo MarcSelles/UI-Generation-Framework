@@ -31,8 +31,9 @@
     <xsl:function name="func:getValue">
         <xsl:param name="element"/>
         <xsl:param name="attribute"/>
+        <xsl:param name="position"/>
         
-        <xsl:value-of select="$elementRoot[@name=$element]/ownedAttribute[@name = $attribute]/value"/>
+        <xsl:value-of select="$elementRoot[@name=$element]/ownedAttribute[@name = $attribute]/value[$position]"/>
     </xsl:function>
     
     <xsl:template name="item">
@@ -62,6 +63,26 @@
         <span class="short-text {$style}"><b><xsl:copy-of select="$label"/></b></span>
         <span class="short-text short-text-value {$style}"><xsl:copy-of select="$shortText"/></span>
   
+    </xsl:template>
+    
+    <xsl:template name="labelValueUnitInline">
+        <xsl:param name="label"/>
+        <xsl:param name="value"/>
+        <xsl:param name="unit"/>
+        <xsl:param name="style"/>
+        
+        <p class="full-text {$style}"><b><xsl:copy-of select="$label"/></b>: <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
+        
+    </xsl:template>
+    
+    <xsl:template name="labelValueUnitTwoLines">
+        <xsl:param name="label"/>
+        <xsl:param name="value"/>
+        <xsl:param name="unit"/>
+        <xsl:param name="style"/>
+        
+        <p class="short-text {$style}"><b><xsl:copy-of select="$label"/></b><br/>
+            <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
     </xsl:template>
 
     <xsl:template name="multipleOptions">
@@ -139,7 +160,16 @@
         <h1><xsl:copy-of select="$content"/></h1>
     </xsl:template>
 
-    
+    <!--<xsl:function name="func:getElementOfPosition">
+        <xsl:param name="position"/>
+        
+        <xsl:call-template name="image">
+            <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,position())"/>
+            <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,position()), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,position()))"/></xsl:with-param>
+            <xsl:with-param name="importance">position()</xsl:with-param>
+            <xsl:with-param name="style">rounded</xsl:with-param>
+        </xsl:call-template>
+    </xsl:function>-->
 
 
 

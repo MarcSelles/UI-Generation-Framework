@@ -12,6 +12,8 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    
+    
     <!-- Identity transform -->
     <xsl:template match="@* | node()">
         <xsl:copy>
@@ -20,7 +22,9 @@
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $ID]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.ID"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.ID">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
@@ -32,188 +36,263 @@
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $TUSSENNAMEN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.tussennamen"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.tussennamen">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $ACHTERNAAM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.achternaam"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.achternaam">
+           <value><xsl:value-of select="."/></value>
+       </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $STRAAT]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.straat"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.straat">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $STRAATNUMMER]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.straatnummer"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.straatnummer">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $WOONPLAATS]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.woonplaats"/></value>
+        
+        <xsl:for-each select="$csv2xml/data/Medewerker.woonplaats">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $POSTCODE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.postcode"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.postcode">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $GEBOORTEDATUM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.geboortedatum"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.geboortedatum">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $GESLACHT]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.geslacht"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.geslacht">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template> 
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $BSN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.bsn"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.bsn">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $BURGERLIJKESTAAT]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.burgerlijkeStaat"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.burgerlijkeStaat">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $IDENTIFICATIE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.identificatie"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.identificatie">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $TELEFOONNUMMERWERK]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.telefoonnummerWerk"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.telefoonnummerWerk">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $TELEFOONNUMMERPRIVE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.telefoonnummerPrive"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.telefoonnummerPrive">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $MAILADRESSWERK]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.mailadressWerk"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.mailadressWerk">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $MAILADRESSPRIVE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.mailadressPrive"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.mailadressPrive">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $NAAMPARTNER]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.naamPartner"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.naamPartner">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $NAAMKINDEREN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.naamKinderen"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.naamKinderen">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $IBAN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.IBAN"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.IBAN">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $FOTO]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.foto"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.foto">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $TYPE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.type"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.type">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $STATUS]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.status"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.status">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $EMOLUMENTEN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.emolumenten"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.emolumenten">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $TYPECONTRACT]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.typeContract"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.typeContract">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $AANTALCONTACTUREN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.aantalContacturen"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.aantalContacturen">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $DATUMINDIENST]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.datumInDienst"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.datumInDienst">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $DATUMINFUNCTIE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Medewerker.datumInFunctie"/></value>
+        <xsl:for-each select="$csv2xml/data/Medewerker.datumInFunctie">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
 
     <xsl:template match="packagedElement[@name = $TEAM]/ownedAttribute[@name = $NAAM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Team.naam"/></value>
+        <xsl:for-each select="$csv2xml/data/Team.naam">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
 
     <xsl:template match="packagedElement[@name = $TEAM]/ownedAttribute[@name = $ID]/*">
-        <value><xsl:value-of select="$csv2xml/data/Team.ID"/></value>
+        <xsl:for-each select="$csv2xml/data/Team.ID">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $FUNCTIE]/ownedAttribute[@name = $NAAM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Functie.naam"/></value>
+        <xsl:for-each select="$csv2xml/data/Functie.naam">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $FUNCTIE]/ownedAttribute[@name = $NIVEAU]/*">
-        <value><xsl:value-of select="$csv2xml/data/Functie.niveau"/></value>
+        <xsl:for-each select="$csv2xml/data/Functie.niveau">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $ROL]/ownedAttribute[@name = $NAAM]/*">
-        <value><xsl:value-of select="$csv2xml/data/Rol.naam"/></value>
+        <xsl:for-each select="$csv2xml/data/Rol.naam">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
 
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $DATUMBEGIN]/*">
-        <value><xsl:value-of select="$csv2xml/data/Teambezetting.datumBegin"/></value>
+        <xsl:for-each select="$csv2xml/data/Teambezetting.datumBegin">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $DATUMEINDE]/*">
-        <value><xsl:value-of select="$csv2xml/data/Teambezetting.datumEinde"/></value>
+        <xsl:for-each select="$csv2xml/data/Teambezetting.datumEinde">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
 
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $MINIMALEBEZETTING]/*">
-        <value><xsl:value-of select="$csv2xml/data/Teambezetting.minimaleBezetting"/></value>
+        <xsl:for-each select="$csv2xml/data/Teambezetting.minimaleBezetting">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $TEAMBEZETTING]/ownedAttribute[@name = $BUFFER]/*">
-        <value><xsl:value-of select="$csv2xml/data/Teambezetting.buffer"/></value>
+        <xsl:for-each select="$csv2xml/data/Teambezetting.buffer">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $VERLOFDAGEN]/ownedAttribute[@name = $TOTAALAANTAL]/*">
-        <value><xsl:value-of select="$csv2xml/data/Verlofdagen.totaalAantal"/></value>
+        <xsl:for-each select="$csv2xml/data/Verlofdagen.totaalAantal">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $VERLOFDAGEN]/ownedAttribute[@name = $TOTAALBESCHIKBAAR]/*">
-        <value><xsl:value-of select="$csv2xml/data/Verlofdagen.beschikbaarAantal"/></value>
+        <xsl:for-each select="$csv2xml/data/Verlofdagen.beschikbaarAantal">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
 
