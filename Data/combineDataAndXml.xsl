@@ -6,7 +6,7 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
-    <xsl:import href="constants.xsl"/>
+    <xsl:import href="../constants.xsl"/>
     <xsl:import href="csvToXml.xsl"/>
     
     <xsl:output indent="yes"/>

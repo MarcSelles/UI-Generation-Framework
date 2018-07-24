@@ -183,13 +183,15 @@
     
     <xsl:template name="spanMedewerker">
         <xsl:param name="content"/>
+        <xsl:param name="position"/>
         
         <xsl:call-template name="item">
             <xsl:with-param name="style">columns</xsl:with-param>
+            <xsl:with-param name="id"><xsl:if test="$position = 1">firstParent</xsl:if></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
                     <xsl:with-param name="style">member center</xsl:with-param>
-                    <xsl:with-param name="id"><xsl:if test="position() = 1">firstChild</xsl:if></xsl:with-param>
+                    <xsl:with-param name="id"><xsl:if test="$position = 1">firstChild</xsl:if></xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>
                     </xsl:with-param>
@@ -203,31 +205,6 @@
         <xsl:param name="content"/>
         <xsl:copy-of select="$content"/>
     </xsl:template>
-    
-    <xsl:template name="multiplicity">
-        <xsl:for-each select="$elementRoot[@name=$MEDEWERKER]/ownedAttribute[@name = $VOORNAAM]/value">
-            <xsl:call-template name="spanMedewerker">
-                <xsl:with-param name="content">
-                    <xsl:copy-of select="func:imageMedewerker(position())"/>
-                    <xsl:copy-of select="func:textVoornaamAchternaam(position())"/>
-                    <xsl:copy-of select="func:textUren(position())"/>
-                    <xsl:copy-of select="func:textFunctie(position())"/>
-                    <xsl:copy-of select="func:textRol(position())"/>
-                </xsl:with-param>
-            </xsl:call-template>
-        </xsl:for-each>
-    </xsl:template>
-    
-    <!--<xsl:template name="spanContent">
-        <xsl:param name="content"/>
-        
-        <xsl:call-template name="item">
-            <xsl:with-param name="style">teambezetting</xsl:with-param>
-            <xsl:with-param name="content">
-                <xsl:copy-of select="$content"/>
-            </xsl:with-param>
-        </xsl:call-template>
-    </xsl:template>-->
     
     <xsl:template name="rstTemplate">
         <xsl:param name="contents"/>
@@ -289,11 +266,10 @@
             <xsl:when test="$multiplicityId = '1'">
                 <xsl:call-template name="spanMedewerker">
                     <xsl:with-param name="content" select="$contents"/>
+                    <xsl:with-param name="position" select="$position"/>
                 </xsl:call-template>
             </xsl:when>
         </xsl:choose>
     </xsl:template>
-    
-    
-    
+
 </xsl:stylesheet>

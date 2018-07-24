@@ -5,116 +5,20 @@
     exclude-result-prefixes="xs func"
     version="2.0">
     <xsl:import href="bezettingUIComponents.xsl"/>
+    <xsl:import href="../rstAndComponentsToUI.xsl"/>
     
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:param name="file1" select="document('file:///Users/marcselles/Master/Thesis/Transformation/Bezetting/Teambezetting_plaintext.xml')"/>
+    <xsl:param name="RST" select="document('file:///Users/marcselles/Master/Thesis/Transformation/Bezetting/Teambezetting_plaintext.xml')"/>
     
-    <xsl:variable name="combined" select="/"/>
     <xsl:template match="/">
         <xsl:call-template name="spanBezetting">
             <xsl:with-param name="content">
-                <xsl:for-each select="$file1//body/*[not(@parent)]">
-                    <xsl:choose>
-                        <xsl:when test="./name() = 'segment'">
-                            <xsl:call-template name="rstTemplate">
-                                <xsl:with-param name="id" select="./@id"/>
-                            </xsl:call-template>
-                            <xsl:copy-of select="func:rstOrderOfElements(.,0)"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:call-template name="rstTemplate">
-                                <xsl:with-param name="id" select="./@id"/>
-                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,0)"/>
-                            </xsl:call-template>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:for-each>
+                <xsl:copy-of select="func:rstAndUIComponentsToUI($RST)"/>
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
-    
-    
-    
-    <xsl:function name="func:rstOrderOfElements">
-        <xsl:param name="parent"/>
-        <xsl:param name="position"/>
-        
-        <xsl:for-each select="$file1//body/*[@parent = $parent/@id]">
-            <xsl:variable name="id" select="string(./@id)"/>
-            <xsl:choose>
-                <xsl:when test="./name() = 'segment'">
-                    <xsl:call-template name="rstTemplate">
-                        <xsl:with-param name="id" select="$id"/>
-                        <xsl:with-param name="position" select="$position"/>
-                    </xsl:call-template>
-                    <xsl:copy-of select="func:rstOrderOfElements(.,$position)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:choose>
-                        <xsl:when test="./@maxEntities">
-                            <xsl:variable name="multiplicityId" select="string(./@multiplicityId)"/>
-                            <xsl:variable name="childs" select="$file1//body/*[@parent = $id]"/>
-                            <xsl:variable name="firstChild" select="$childs[1]/text()"/>
-                            <xsl:variable name="class" select="substring-before($firstChild,'.')"/>
-                            <xsl:variable name="attribute" select="substring-after($firstChild,'.')"/>
-                            <xsl:variable name="numberOfInstances" select="count($childs)"/>
-                            <xsl:variable name="numberOfInstances" select="count($elementRoot[@name= $class]/ownedAttribute[@name = $attribute]/value)"/>
-                            <xsl:call-template name="rstTemplate">
-                                <xsl:with-param name="id" select="$id"/>
-                                <xsl:with-param name="contents">
-                                    
-                                    <xsl:for-each select="1 to $numberOfInstances">
-                                        <xsl:variable name="position" select="."/>
-                                        <xsl:call-template name="rstTemplate">
-                                            <xsl:with-param name="multiplicityId" select="$multiplicityId"/>
-                                            <xsl:with-param name="contents">
-                                                <xsl:for-each select="$childs">
-                                                    
-                                                    <xsl:choose>
-                                                        <xsl:when test="./name() = 'segment'">
-                                                            <xsl:call-template name="rstTemplate">
-                                                                <xsl:with-param name="id" select="./@id"/>
-                                                                <xsl:with-param name="position" select="$position"/>
-                                                            </xsl:call-template>
-                                                            <xsl:copy-of select="func:rstOrderOfElements(.,$position)"/>
-                                                        </xsl:when>
-                                                        <xsl:otherwise>
-                                                            <xsl:call-template name="rstTemplate">
-                                                                <xsl:with-param name="id" select="./@id"/>
-                                                                <xsl:with-param name="position" select="$position"/>
-                                                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position)"/>
-                                                            </xsl:call-template>
-                                                        </xsl:otherwise>
-                                                    </xsl:choose>
-                                                </xsl:for-each>
-                                            </xsl:with-param>
-                                        </xsl:call-template>
-                                    </xsl:for-each>
-                                </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:call-template name="rstTemplate">
-                                <xsl:with-param name="id" select="$id"/>
-                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position)"/>
-                                <xsl:with-param name="position" select="$position"/>
-                            </xsl:call-template>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:otherwise>
-            </xsl:choose>
-            
-        </xsl:for-each>
-    </xsl:function>
-    
-    <xsl:function name="func:numberOfValues">
-        <xsl:param name="class"/>
-        <xsl:param name="attribute"/>
-        
-        <xsl:value-of select="$elementRoot[@name=$class]/ownedAttribute[@name = $attribute]/value"/>
-    </xsl:function>
     
 
 </xsl:stylesheet>
