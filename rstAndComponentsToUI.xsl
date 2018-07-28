@@ -103,12 +103,5 @@
         </xsl:for-each>
     </xsl:function>
     
-    <xsl:function name="func:numberOfValues">
-        <xsl:param name="class"/>
-        <xsl:param name="attribute"/>
-        
-        <xsl:value-of select="$elementRoot[@name=$class]/ownedAttribute[@name = $attribute]/value"/>
-    </xsl:function>
-    
     
 </xsl:stylesheet>

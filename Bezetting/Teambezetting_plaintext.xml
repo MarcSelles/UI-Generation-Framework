@@ -26,24 +26,19 @@
 </header>
 <body>
 		<segment id="1" >Teambezetting</segment>
-		<segment id="2" >MBI students</segment>
+		<segment id="2" >{Team.naam}</segment>
 		<group id="14" type="span"/>
 		<!-- <segment id="2" parent="14" relname="sequence">MBI students</segment> --> 
-		<segment id="3" parent="14" relname="sequence">10-07-2018 - 29-07-2018</segment>
+		<segment id="3" parent="14" relname="sequence">{Teambezetting.datumBegin} - {Teambezetting.datumEinde}</segment>
 		<group id="12" type="multinuc" parent="14" relname="sequence"/>
-		<segment id="4" parent="12" relname="sequence">Minimale Bezetting:160 uur</segment>
-		<segment id="5" parent="12" relname="sequence">Buffer: 30 uur</segment>
+		<segment id="4" parent="12" relname="sequence">Minimale Bezetting:{Teambezetting.minimaleBezetting} uur</segment>
+		<segment id="5" parent="12" relname="sequence">Buffer: {Teambezetting.buffer} uur</segment>
 		<group id="13" type="multinuc" parent="14" relname="sequence" minEntities="1" maxEntities="40" multiplicityId="1" />
 		<segment id="6" parent="13" relname="sequence">Medewerker.foto</segment>
-		<segment id="7" parent="13" relname="sequence">Henk Smits</segment>
-		<segment id="8" parent="13" relname="sequence">40 uur</segment>
+		<segment id="7" parent="13" relname="sequence">{Medewerker.naam}</segment>
+		<segment id="8" parent="13" relname="sequence">{Medewerker.aantalContacturen} uur</segment>
 		<group id="11" type="multinuc" parent="13" relname="sequence"/>
-		<segment id="9" parent="11" relname="joint">Junior Functioneel ontwerper</segment>
-		<segment id="10" parent="11" relname="joint">Poortwachter</segment>
-
-		
-		
-		
-		
+		<segment id="9" parent="11" relname="joint">{Functie.niveau} {Functie.naam}</segment>
+		<segment id="10" parent="11" relname="joint">{Rol.naam}</segment>
   </body>
 </rst>

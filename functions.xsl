@@ -84,8 +84,20 @@
         <p class="short-text {$style}"><b><xsl:copy-of select="$label"/></b><br/>
             <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
     </xsl:template>
-
-    <xsl:template name="multipleOptions">
+    
+    <xsl:template name="labelInlineTwoValueTwoUnitTwoLines">
+        <xsl:param name="label"/>
+        <xsl:param name="value1"/>
+        <xsl:param name="unit1"/>
+        <xsl:param name="value2"/>
+        <xsl:param name="unit2"/>
+        <xsl:param name="style"/>
+        
+        <span class="short-text {$style}"><b><xsl:copy-of select="$label"/></b><br/>
+            <xsl:copy-of select="concat(concat($value1, ' '), $unit1)"/>/ <xsl:copy-of select="concat(concat($value2, ' '), $unit2) "/></span>
+    </xsl:template>
+    
+    <xsl:template name="tabMultipleOptions">
         <xsl:param name="labels"/>
         
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
@@ -96,6 +108,12 @@
                 <button class="tablinks"><xsl:value-of select="."/></button>
             </xsl:for-each>
         </div>
+    </xsl:template>
+
+    <xsl:template name="dropdownMultipleOptions">
+        <xsl:param name="labels"/>
+        
+        <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         
         <select class="dropdown">
             <xsl:for-each select="$tokenizeLabel">
@@ -110,6 +128,14 @@
         <xsl:param name="style"/>
         
         <p class="importance{$importance} {$style}"><xsl:copy-of select="$content"/></p>
+    </xsl:template>
+    
+    <xsl:template name="textLine">
+        <xsl:param name="content"/>
+        <xsl:param name="importance" select="1"/>
+        <xsl:param name="style"/>
+        
+        <span class="importance{$importance} {$style}"><xsl:copy-of select="$content"/></span>
     </xsl:template>
     
     <xsl:template name="image">
@@ -138,17 +164,17 @@
             <xsl:copy-of select="$values"/>            
     </xsl:template>
 
-    <xsl:template name="button">
+    <xsl:template name="submitButton">
         <xsl:param name="text"/>
         <xsl:param name="styleId"/>
         <xsl:param name="disabled" select="false()"/>
         
         <xsl:choose>
             <xsl:when test="$disabled">
-                <button class="button" id="{$styleId}" disabled="disabled" ><xsl:copy-of select="$text"/></button>
+                <input type="submit" value="{$text}"></input>
             </xsl:when>
             <xsl:otherwise>
-                <button class="button" id="{$styleId}" onclick="button()"><xsl:copy-of select="$text"/></button>
+                <input type="submit" value="{$text}"></input>
             </xsl:otherwise>
         </xsl:choose>
         
