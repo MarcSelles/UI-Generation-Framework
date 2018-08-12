@@ -59,9 +59,9 @@
         <xsl:param name="label"/>
         <xsl:param name="style"/>
         
-        <span class="full-text {$style}"><xsl:copy-of select="$fullText"/></span>
-        <span class="short-text {$style}"><b><xsl:copy-of select="$label"/></b></span>
-        <span class="short-text short-text-value {$style}"><xsl:copy-of select="$shortText"/></span>
+        <span class="{$style}"><xsl:copy-of select="$fullText"/></span>
+        <span class="{$style}"><b><xsl:copy-of select="$label"/></b></span>
+        <span class="short-text-value {$style}"><xsl:copy-of select="$shortText"/></span>
   
     </xsl:template>
     
@@ -71,7 +71,7 @@
         <xsl:param name="unit"/>
         <xsl:param name="style"/>
         
-        <p class="full-text {$style}"><b><xsl:copy-of select="$label"/></b>: <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
+        <p class="{$style}"><b><xsl:copy-of select="$label"/></b>: <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
         
     </xsl:template>
     
@@ -81,7 +81,7 @@
         <xsl:param name="unit"/>
         <xsl:param name="style"/>
         
-        <p class="short-text {$style}"><b><xsl:copy-of select="$label"/></b><br/>
+        <p class="{$style}"><b><xsl:copy-of select="$label"/></b><br/>
             <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
     </xsl:template>
     
@@ -93,7 +93,7 @@
         <xsl:param name="unit2"/>
         <xsl:param name="style"/>
         
-        <span class="short-text {$style}"><b><xsl:copy-of select="$label"/></b><br/>
+        <span class="{$style}"><b><xsl:copy-of select="$label"/></b><br/>
             <xsl:copy-of select="concat(concat($value1, ' '), $unit1)"/>/ <xsl:copy-of select="concat(concat($value2, ' '), $unit2) "/></span>
     </xsl:template>
     
@@ -103,7 +103,7 @@
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         
         <!-- Tab links -->
-        <div class="tab full-text">
+        <div class="tab">
             <xsl:for-each select="$tokenizeLabel">
                 <button class="tablinks"><xsl:value-of select="."/></button>
             </xsl:for-each>
@@ -124,27 +124,24 @@
     
     <xsl:template name="text">
         <xsl:param name="content"/>
-        <xsl:param name="importance" select="1"/>
         <xsl:param name="style"/>
         
-        <p class="importance{$importance} {$style}"><xsl:copy-of select="$content"/></p>
+        <p class="{$style}"><xsl:copy-of select="$content"/></p>
     </xsl:template>
     
     <xsl:template name="textLine">
         <xsl:param name="content"/>
-        <xsl:param name="importance" select="1"/>
         <xsl:param name="style"/>
         
-        <span class="importance{$importance} {$style}"><xsl:copy-of select="$content"/></span>
+        <span class="{$style}"><xsl:copy-of select="$content"/></span>
     </xsl:template>
     
     <xsl:template name="image">
         <xsl:param name="source"/>
         <xsl:param name="name"/>
-        <xsl:param name="importance"/>
         <xsl:param name="style"/>
         
-        <img class="importance{$importance} {$style}" src="{$source}" alt="{$name}" width="60%" height="auto"/>
+        <img class="{$style}" src="{$source}" alt="{$name}" width="60%" height="auto"/>
     </xsl:template>
 
     <xsl:template name="labelValue">
@@ -182,8 +179,9 @@
 
     <xsl:template name="title">
         <xsl:param name="content"/>
+        <xsl:param name="style"/>
         
-        <h1><xsl:copy-of select="$content"/></h1>
+        <h1 class="{$style}"><xsl:copy-of select="$content"/></h1>
     </xsl:template>
 
     <!--<xsl:function name="func:getElementOfPosition">

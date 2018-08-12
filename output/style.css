@@ -2,101 +2,68 @@ body {
     font-family:Lato, Helvetica, sans-serif;
 }
 
-/* Fake navigation */
-.sidenav {
-    height: 100%;
-    width: 12%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #e6e6e6;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    margin-top:300px;
-    padding: 6px 6px 6px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #111;
-    display: block;
-    transform: rotate(-90.0deg);
-    letter-spacing:14px;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-/* Main content */
-.main {
-    float:right;
-    width: 88%; /* Same as the width of the sidenav */
-}
-
 /* Header */
-h1 {
-    text-align:center;
+.inline {
+    display: inline;
+}
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display:flex;
+    flex-wrap:wrap;
+    overflow: auto;
+}
+
+.vertical {
+    flex-basis: 100%;
+}
+
+.horizontal2 {
+    flex-basis: 50%;
+}
+
+
+/* First row of flex-box*/
+.period{
+    font-size:18px;
+}
+
+.requirements {
+    font-size:22px;
 }
 
 .teamnaam {
     font-size:24px;
 }
 
+.memberFontSize {
+    font-size:12px;
+}
+
+.standaard {
+    font-size:20px;
+}
+
 /* Flex-box of all elements of teambezetting */
 .teambezetting {
     border: 3px solid grey;
-	border-radius: 25px;	
-	display:flex;
-    flex-wrap:wrap;
-    overflow: auto;
+    border-radius: 25px;    
 }
 
-/* First row of flex-box*/
-.requirements {
-    flex-basis: 50%;
-    text-align: center;
-    font-size:22px;
-}
-
-.period{
-    flex-basis: 100%;
-    text-align: center;
-    font-size:18px;
-    margin-bottom: -20px;
-}
-
-.short-text { display: none; }
-
-.short-text-value {
-    margin-bottom: 10px;
-}
-
-.center {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.importance2, .importance3{
-	font-size: 12px;
-}
+.custom { display: none; }
 
 img.rounded {
     border-radius: 50%;
 }
 
 /* Second row of Flex-box*/
-.teambox {
-    flex-basis: 100%;
-}
+
 
 /* Create a new flex-box inside the second row of the flex-box so that that content can be scrolled */
 .team {
-    display:flex;
     flex-wrap:wrap;
     overflow-y: auto;
     height: 312px;
@@ -110,8 +77,6 @@ img.rounded {
 	overflow: -moz-scrollbars-vertical;
     overflow: scroll;
     max-height: 350px;
-/*    flex: 0 0 299px;*/
-/*	overflow-y: scroll;*/
 }
 
 /* One element of the second flex-box*/
@@ -126,6 +91,11 @@ img.rounded {
     flex-basis: auto; /* default value */
     flex-grow: 1;
 }
+
+
+
+
+
 
 /* Style the tab */
 .tab {
@@ -159,10 +129,6 @@ img.rounded {
     font-size:18px;
 }
 
-/*.tablinks + .tablinks{
-    margin-left:30px;
-}*/
-
 /* Style the tab content */
 .tabcontent {
     display: none;
@@ -183,14 +149,6 @@ span{
      /* Green */
     }
 
-table {
-    border-spacing:25px;
-}
-
-.full-text{
-    font-size:100%;
-    line-height:30px;
-}
 
 /* Scroll-bar */
 ::-webkit-scrollbar {
@@ -203,15 +161,48 @@ table {
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }    
 
-@media only screen and (max-width:700px) {
+/*@media only screen and (max-width:700px) {
     .bezetting {
         flex-basis: calc(100% / 3);
     }
     .imp5{
         display:block;
     }
+}*/
+
+/* Fake navigation */
+.sidenav {
+    height: 100%;
+    width: 12%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #e6e6e6;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
+.sidenav a {
+    margin-top:300px;
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #111;
+    display: block;
+    transform: rotate(-90.0deg);
+    letter-spacing:14px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+    float:right;
+    width: 88%; /* Same as the width of the sidenav */
+}
 
 /*Bezetting: Width - Importance 5
 /*@media only screen and (max-width:1150px) {

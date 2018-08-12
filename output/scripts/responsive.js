@@ -1,39 +1,9 @@
 var numCol = 4;
 var breakpoints = [];
-// fires on resize of browser
+var custom = [];
+var changedElement = [];
 
-
-// function numberOfColumns(parent, child, classParent) {
-	
-// 	var parentWidth = parent.offsetWidth;
-// 	var childWidth = child.offsetWidth;
-
-// 	if ($(window).width() > breakpoints[breakpoints.length-1]) {
-// 		var index = breakpoints.indexOf($(window).width());
-// 		breakpoints.splice(breakpoints.length-1, 1);
-
-// 		console.log("br" + breakpoints)
-// 		numCol = numCol + 1
-// 		for (var i = 0; i < classParent.length; i++) {
-// 			console.log(classParent.length);
-// 			var column = 100 / numCol;
-// 			classParent[i].style.flexBasis = column + "%";
-// 		}
-		
-// 		return;
-// 	}
-
-// 	if ((childWidth + 10) >= parentWidth & !breakpoints.includes($(window).width())) {
-//     	breakpoints.push(+$(window).width() + +30);
-//     	console.log("Break" + breakpoints)
-//     	numCol = numCol - 1;
-// 		for (var i = 0; i < classParent.length; i++) {
-// 			var column = 100 / numCol;
-// 			classParent[i].style.flexBasis = column + "%";
-// 		}
-// 	}
-// }
-
+// Depends the number of columns of a multiplicity. If the screensize changes, the number of columns will also be changed to the right fit. 
 function numberOfColumns(parent, child, marginChild, classParent) {
 	var parentWidth = parent.offsetWidth;
 	var childWidth = child.offsetWidth;
@@ -43,46 +13,141 @@ function numberOfColumns(parent, child, marginChild, classParent) {
 		childMinWidth = parseInt(childStyle.getPropertyValue('min-width')),
 		childMaxWidth = parseInt(childStyle.getPropertyValue('max-width'));
 
-	console.log(parseInt(childMinWidth));
-
 	if(childMaxWidth * classParent.length < parent.parentElement.offsetWidth) {
-		console.log("chi" + childMaxWidth)
 		numCol = classParent.length;
-		console.log(numCol);
 	} else {numCol = parent.parentElement.offsetWidth / (childMinWidth + marginChild)}
-	 
-
-	console.log(parseInt(numCol))
 
 	var column = 100 / parseInt(numCol);
 
 	for (var i = 0; i < classParent.length; i++) {
 		classParent[i].style.flexBasis = column + "%";
 	}
-	console.log(parent.offsetHeight);
+}
 
-	var test = document.getElementById("minbez");
-	var ctx=test.getContext("2d");
-	
+// When an element does not fit its containter, the custom-made solution for this element will be visable.
+function originalOrCustom(parent, child, marginChild) {
+	var parentWidth = parent.offsetWidth;
+	var childWidth = child.offsetWidth;
 
-	console.log("test" + ctx.measureText(txt).width);
+	var originalFontSizeChild = window.originalFontSizes.find(function(i) {
+		return child === i[0]
+	});
+
+	var importance = $.grep(child.className.split(" "), function(v, i){
+       return v.indexOf('importance') === 0;
+   }).join();
+
+	var childFontSize = originalFontSizeChild[1]
+
+	if(changedElement.includes(child) || childWidth + marginChild > parentWidth && childFontSize > 0.8 * originalFontSizeChild[1]){
+
+		$( parent.parentElement).find('p.' + importance + ',' + 'span.' + importance).each(function( index ) {
+			$(this).css( "font-size", originalFontSizeChild[1] );
+		});
+
+		while ( childWidth + marginChild > parentWidth && childFontSize > 0.8 * originalFontSizeChild[1]) {
+			$( parent.parentElement).find('p.' + importance + ',' + 'span.' + importance).each(function( index ) {
+				var newFontSize = childFontSize - 0.5;
+				$(this).css( 'font-size', newFontSize);
+			});
+			childWidth = child.offsetWidth;
+			childFontSize -= 0.5;
+			// console.log(child in changedElement)
+			if(!changedElement.includes(child)){
+				changedElement.push(child);
+			};
+		};
+	};
+
+	if (childFontSize <= 0.8 * originalFontSizeChild[1] && childWidth + marginChild > parentWidth) {
+		for (var i=0, max=20; i < max; i++) {
+			if($( child).hasClass('importance' + i)) {
+				if ($ (parent.parentElement).find('.' + importance + '.original').css( "display") == "inline") {
+					custom.push([$(window).width(), parent]);
+				};
+				
+				$( parent.parentElement).find('.' + importance + '.original').each(function( index ) {
+					$(this).css( "display", "none" );
+				});
+				$( parent.parentElement).find('.' + importance + '.custom').each(function( index ) {
+					$(this).css( "display", "inline" );
+				});
+			};
+		};
+	}
+};
+
+// Change the custom back to the original
+function returnToOriginal(parent){
+	$( parent.parentElement).find('.original').each(function( index ) {
+		$(this).css( "display", "inline" );
+	});
+	$( parent.parentElement).find('.custom').each(function( index ) {
+		$(this).css( "display", "none" );
+	});
 }
 
 
 window.onload = function() {
-	var bezetting = document.getElementById('firstParent');
-	var member = document.getElementById('firstChild');
-	var classBezetting = document.getElementsByClassName('columns');
+	if (!document.getElementById('firstParent') == 0) {
+		var bezetting = document.getElementById('firstParent');
+		var member = document.getElementById('firstChild');
+		var classBezetting = document.getElementsByClassName('columns');
 
-	numberOfColumns(bezetting, member, 30, classBezetting)
-}
+		numberOfColumns(bezetting, member, 20, classBezetting)
+	}
+	
+
+	// Change font-size or element
+	var all = document.querySelectorAll("p,span");
+	
+	window.originalFontSizes = [];
+
+	for (var i=0, max=all.length; i < max; i++) {
+		var fontSize = parseInt(window.getComputedStyle(all[i]).getPropertyValue("font-size"));
+		window.originalFontSizes.push([all[i],fontSize]);
+	}
+	for (var i=0, max=all.length; i < max; i++) {
+		originalOrCustom(all[i].parentElement, all[i], 60);
+			
+
+	     // Do something with the element here
+		if(!custom.length == 0){
+			for (var i=0, max=custom.length; i < max; i++) {
+			     if ($(window).width() > custom[i][0]){
+			     	returnToOriginal(custom[i][1].parentElement);
+			     	custom.splice(i, 1);
+			     };
+			};
+		};
+	};
+};
 
 
 window.onresize = function(event) {
-	// code goes here
-	var bezetting = document.getElementById('firstParent');
-	var member = document.getElementById('firstChild');
-	var classBezetting = document.getElementsByClassName('columns');
+	// Number of Columns
+	if (!document.getElementById('firstParent') == 0) {
+		var bezetting = document.getElementById('firstParent');
+		var member = document.getElementById('firstChild');
+		var classBezetting = document.getElementsByClassName('columns');
 
-	numberOfColumns(bezetting, member, 30, classBezetting)
-};
+		numberOfColumns(bezetting, member, 20, classBezetting)
+	}
+
+	// Change font-size or element
+	var all = document.querySelectorAll("p,span");
+
+	for (var i=0, max=all.length; i < max; i++) {
+		originalOrCustom(all[i].parentElement, all[i], 60);
+
+	     // Do something with the element here
+		if(!custom.length == 0){
+			for (var i=0, max=custom.length; i < max; i++) {
+			     if ($(window).width() > custom[i][0]){
+			     	returnToOriginal(custom[i][1].parentElement)
+			     	custom.splice(i, 1);
+			     }
+			};
+		};
+	}
+}

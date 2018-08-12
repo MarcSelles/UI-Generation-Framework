@@ -16,15 +16,13 @@
                 <xsl:when test="./name() = 'segment'">
                     <xsl:call-template name="rstTemplate">
                         <xsl:with-param name="id" select="./@id"/>
-                        <xsl:with-param name="importance" select="'importance1'"/>
                     </xsl:call-template>
-                    <xsl:copy-of select="func:rstOrderOfElements(.,0, 1)"/>
+                    <xsl:copy-of select="func:rstOrderOfElements(.,0)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:call-template name="rstTemplate">
                         <xsl:with-param name="id" select="./@id"/>
-                        <xsl:with-param name="importance" select="'importance1'"/>
-                        <xsl:with-param name="contents" select="func:rstOrderOfElements(.,0, 1)"/>
+                        <xsl:with-param name="contents" select="func:rstOrderOfElements(.,0)"/>
                     </xsl:call-template>
                 </xsl:otherwise>
             </xsl:choose>
@@ -36,9 +34,6 @@
     <xsl:function name="func:rstOrderOfElements">
         <xsl:param name="parent"/>
         <xsl:param name="position"/>
-        <xsl:param name="importance"/>
-        
-        <xsl:variable name="importance" select="$importance + 1"/>
         
         <xsl:for-each select="$RST//body/*[@parent = $parent/@id]">
             <xsl:variable name="id" select="string(./@id)"/>
@@ -47,9 +42,8 @@
                     <xsl:call-template name="rstTemplate">
                         <xsl:with-param name="id" select="$id"/>
                         <xsl:with-param name="position" select="$position"/>
-                        <xsl:with-param name="importance" select="concat('importance', $importance)"/>
                     </xsl:call-template>
-                    <xsl:copy-of select="func:rstOrderOfElements(.,$position, $importance)"/>
+                    <xsl:copy-of select="func:rstOrderOfElements(.,$position)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:choose>
@@ -63,15 +57,12 @@
                             <xsl:variable name="numberOfInstances" select="count($elementRoot[@name= $class]/ownedAttribute[@name = $attribute]/value)"/>
                             <xsl:call-template name="rstTemplate">
                                 <xsl:with-param name="id" select="$id"/>
-                                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
                                 <xsl:with-param name="contents">
-                                    <xsl:variable name="importance" select="$importance + 1"/>
                                     <xsl:for-each select="1 to $numberOfInstances">
                                         <xsl:variable name="position" select="."/>
                                         <xsl:call-template name="rstTemplate">
                                             <xsl:with-param name="multiplicityId" select="$multiplicityId"/>
                                             <xsl:with-param name="position" select="$position"/>
-                                            <xsl:with-param name="importance" select="concat('importance', $importance)"/>
                                             <xsl:with-param name="contents">
                                                 <xsl:for-each select="$childs">
                                                     
@@ -80,16 +71,14 @@
                                                             <xsl:call-template name="rstTemplate">
                                                                 <xsl:with-param name="id" select="./@id"/>
                                                                 <xsl:with-param name="position" select="$position"/>
-                                                                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
                                                             </xsl:call-template>
-                                                            <xsl:copy-of select="func:rstOrderOfElements(.,$position, $importance)"/>
+                                                            <xsl:copy-of select="func:rstOrderOfElements(.,$position)"/>
                                                         </xsl:when>
                                                         <xsl:otherwise>
                                                             <xsl:call-template name="rstTemplate">
                                                                 <xsl:with-param name="id" select="./@id"/>
                                                                 <xsl:with-param name="position" select="$position"/>
-                                                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position, $importance)"/>
-                                                                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
+                                                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position)"/>
                                                             </xsl:call-template>
                                                         </xsl:otherwise>
                                                     </xsl:choose>
@@ -103,9 +92,8 @@
                         <xsl:otherwise>
                             <xsl:call-template name="rstTemplate">
                                 <xsl:with-param name="id" select="$id"/>
-                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position, $importance)"/>
+                                <xsl:with-param name="contents" select="func:rstOrderOfElements(.,$position)"/>
                                 <xsl:with-param name="position" select="$position"/>
-                                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
                             </xsl:call-template>
                         </xsl:otherwise>
                     </xsl:choose>

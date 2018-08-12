@@ -25,8 +25,9 @@
 		</relations>
 </header>
 <body>
-		<segment id="1" >Teambezetting</segment>
-		<segment id="2" >{Team.naam}</segment>
+		<group id="15" type="span"/>
+		<segment id="1" parent="15">Teambezetting</segment>
+		<segment id="2" parent="15">{Team.naam}</segment>
 		<group id="14" type="span"/>
 		<!-- <segment id="2" parent="14" relname="sequence">MBI students</segment> --> 
 		<segment id="3" parent="14" relname="sequence">{Teambezetting.datumBegin} - {Teambezetting.datumEinde}</segment>

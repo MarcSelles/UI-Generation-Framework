@@ -1,6 +1,0 @@
-<segment id="1" parent="14" relname="elaboration">Teambezetting</segment>
-<segment id="2" parent="14" relname="sequence">MBI students</segment>
-<segment id="3" parent="14" relname="sequence">10-07-2018 - 29-07-2018</segment>
-<group id="12" type="multinuc" parent="14" relname="sequence"></group>
-<group id="13" type="multinuc" parent="14" relname="sequence"></group>
-<div class="teambezetting" id="">test</div>
