@@ -60,8 +60,9 @@ function originalOrCustom(parent, child, marginChild) {
 	};
 
 	if (childFontSize <= 0.8 * originalFontSizeChild[1] && childWidth + marginChild > parentWidth) {
+		console.log(importance)
 		for (var i=0, max=20; i < max; i++) {
-			if($( child).hasClass('importance' + i)) {
+			if($( child).hasClass(importance)) {
 				if ($ (parent.parentElement).find('.' + importance + '.original').css( "display") == "inline") {
 					custom.push([$(window).width(), parent]);
 				};
@@ -108,18 +109,20 @@ window.onload = function() {
 		window.originalFontSizes.push([all[i],fontSize]);
 	}
 	for (var i=0, max=all.length; i < max; i++) {
-		originalOrCustom(all[i].parentElement, all[i], 60);
-			
+		if(!$(all[i]).hasClass("memberFontSize")){
+			originalOrCustom(all[i].parentElement, all[i], 60);
+				
 
-	     // Do something with the element here
-		if(!custom.length == 0){
-			for (var i=0, max=custom.length; i < max; i++) {
-			     if ($(window).width() > custom[i][0]){
-			     	returnToOriginal(custom[i][1].parentElement);
-			     	custom.splice(i, 1);
-			     };
+		     // Do something with the element here
+			if(!custom.length == 0){
+				for (var i=0, max=custom.length; i < max; i++) {
+				     if ($(window).width() > custom[i][0]){
+				     	returnToOriginal(custom[i][1].parentElement);
+				     	custom.splice(i, 1);
+				     };
+				};
 			};
-		};
+		}
 	};
 };
 
@@ -138,16 +141,18 @@ window.onresize = function(event) {
 	var all = document.querySelectorAll("p,span");
 
 	for (var i=0, max=all.length; i < max; i++) {
-		originalOrCustom(all[i].parentElement, all[i], 60);
+		if(!$(all[i]).hasClass("memberFontSize")){
+			originalOrCustom(all[i].parentElement, all[i], 60);
 
-	     // Do something with the element here
-		if(!custom.length == 0){
-			for (var i=0, max=custom.length; i < max; i++) {
-			     if ($(window).width() > custom[i][0]){
-			     	returnToOriginal(custom[i][1].parentElement)
-			     	custom.splice(i, 1);
-			     }
+		     // Do something with the element here
+			if(!custom.length == 0){
+				for (var i=0, max=custom.length; i < max; i++) {
+				     if ($(window).width() > custom[i][0]){
+				     	returnToOriginal(custom[i][1].parentElement)
+				     	custom.splice(i, 1);
+				     }
+				};
 			};
-		};
+		}
 	}
 }
