@@ -10,7 +10,22 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>Bezetting/bezettingUIComponents.xsl</String>
+                                    <String>Data/combineDataAndXml.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>domainModelXMI</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>Categorie/categorieCombineUIComponentsAndRST.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -41,6 +56,21 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>Vakantiedagen/vakantiedagenCombineUICompoentsAndRST.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>dataToComponent</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XML</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>Bezetting/bezettingUIComponents.xsl</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>

@@ -27,9 +27,9 @@
 <body>
 		<segment id="1" >Prikbord</segment>
 		<segment id="2" >Kies uw categorie</segment>
-		<group id="3" type="span" minEntities="1" maxEntities="40" multiplicityId="1" />
-		<segment id="2" parent="10" relname="sequence">{Categorie.toegankelijkheid} - {Categorie.naam}</segment>
-		<segment id="3" parent="10" relname="sequence">{Categorie.samenvatting}</segment>
-		
+		<group id="3"  parent="6" type="span" minEntities="1" maxEntities="40" multiplicityId="1" />
+		<segment id="4" parent="3" relname="sequence">Categorie.naam</segment>
+		<segment id="5" parent="3" relname="sequence">{Categorie.samenvatting}</segment>
+		<group id="6"/>
   </body>
 </rst>

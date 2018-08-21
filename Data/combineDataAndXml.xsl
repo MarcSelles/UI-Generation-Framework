@@ -295,5 +295,19 @@
         </xsl:for-each>
         <xsl:copy-of select="."/>
     </xsl:template>
+    
+    <xsl:template match="packagedElement[@name = 'Categorie']/ownedAttribute[@name = $NAAM]/*">
+        <xsl:for-each select="$csv2xml/data/Categorie.naam">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="packagedElement[@name = 'Categorie']/ownedAttribute[@name = 'samenvatting']/*">
+        <xsl:for-each select="$csv2xml/data/Categorie.samenvatting">
+            <value><xsl:value-of select="."/></value>
+        </xsl:for-each>
+        <xsl:copy-of select="."/>
+    </xsl:template>
 
 </xsl:stylesheet>
