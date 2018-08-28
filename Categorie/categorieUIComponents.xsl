@@ -42,10 +42,10 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">teambox vertical <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">vertical <xsl:value-of select="$style"/></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
-                    <xsl:with-param name="style">team flex</xsl:with-param>
+                    <xsl:with-param name="style">flex</xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>
                     </xsl:with-param>
@@ -74,7 +74,7 @@
         </xsl:call-template>
     </xsl:function>
     
-    <xsl:template name="spanMedewerker">
+    <xsl:template name="spanMultiplicity">
         <xsl:param name="content"/>
         <xsl:param name="position"/>
         <xsl:param name="style"/>
@@ -84,7 +84,7 @@
             <xsl:with-param name="id"><xsl:if test="$position = 1">firstParent</xsl:if></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
-                    <xsl:with-param name="style">member center <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">item center greyBorder <xsl:value-of select="$style"/></xsl:with-param>
                     <xsl:with-param name="id"><xsl:if test="$position = 1">firstChild</xsl:if></xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>
@@ -136,7 +136,7 @@
                 </xsl:call-template>
             </xsl:when>
             <xsl:when test="$multiplicityId = '1'">
-                <xsl:call-template name="spanMedewerker">
+                <xsl:call-template name="spanMultiplicity">
                     <xsl:with-param name="content" select="$contents"/>
                     <xsl:with-param name="position" select="$position"/>
                     <xsl:with-param name="style" select="$importance"/>

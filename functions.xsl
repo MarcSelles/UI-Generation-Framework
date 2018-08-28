@@ -36,6 +36,21 @@
         <xsl:value-of select="$elementRoot[@name=$element]/ownedAttribute[@name = $attribute]/value[$position]"/>
     </xsl:function>
     
+    <xsl:function name="func:checkEmpty">
+        <xsl:param name="id"/>
+        <xsl:param name="importance"/>
+        <xsl:param name="position"/>
+        
+        <xsl:variable name="value">
+            <xsl:call-template name="rstTemplate">
+                <xsl:with-param name="id" select="$id"/>
+                <xsl:with-param name="position" select="$position"/>
+                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:value-of select="$value != ''"/>
+    </xsl:function>
+    
     <xsl:template name="item">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
@@ -157,8 +172,7 @@
         <xsl:param name="labels"/>
         <xsl:param name="values"/>        
         
-        <b><xsl:copy-of select="$labels"/></b><br/>
-            <xsl:copy-of select="$values"/>            
+        <label><xsl:copy-of select="$labels"/></label><xsl:copy-of select="$values"/>            
     </xsl:template>
 
     <xsl:template name="submitButton">

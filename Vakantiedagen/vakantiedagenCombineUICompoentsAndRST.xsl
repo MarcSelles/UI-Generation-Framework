@@ -18,6 +18,10 @@
             <xsl:with-param name="content">
                 <xsl:copy-of select="func:rstAndUIComponentsToUI($RST)"/>
             </xsl:with-param>
+            <xsl:with-param name="additionalHead">
+                <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+                <script type="text/javascript" src="scripts/calendar.js"></script>
+            </xsl:with-param>
         </xsl:call-template>
         
     </xsl:template>

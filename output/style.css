@@ -2,7 +2,6 @@ body {
     font-family:Lato, Helvetica, sans-serif;
 }
 
-/* Header */
 .inline {
     display: inline;
 }
@@ -25,9 +24,7 @@ body {
     flex-basis: 50%;
 }
 
-
-/* First row of flex-box*/
-.period{
+.mainBodyFontSize {
     font-size:18px;
 }
 
@@ -47,8 +44,10 @@ body {
     font-size:20px;
 }
 
-/* Flex-box of all elements of teambezetting */
-.teambezetting {
+
+
+
+.greyBorder {
     border: 3px solid grey;
     border-radius: 25px;    
 }
@@ -59,43 +58,30 @@ img.rounded {
     border-radius: 50%;
 }
 
-/* Second row of Flex-box*/
-
-
 /* Create a new flex-box inside the second row of the flex-box so that that content can be scrolled */
-.team {
-    flex-wrap:wrap;
-    overflow-y: auto;
-    height: 312px;
-    margin-bottom:20px;
-    margin-right:10px;
+.oneRow {
+    height: 270px;
 }
 
 /* Only show one row with 4 elements. Let user scroll for next elements*/
-.columns {
-	margin-top:20px;
+.scroll {
 	overflow: -moz-scrollbars-vertical;
     overflow: scroll;
     max-height: 350px;
 }
 
-/* One element of the second flex-box*/
-.member {
-    width:80%;
-    border:1px solid grey;
-    box-sizing:content-box;
-    border-radius: 25px;
+.item {
     padding-top:10px;
-    min-width: 210px;
-    max-width: 300px;
     flex-basis: auto; /* default value */
     flex-grow: 1;
 }
 
-
-
-
-
+/* One element of the second flex-box*/
+.member {
+    /*width:80%;*/
+    min-width: 210px;
+    max-width: 300px;
+}
 
 /* Style the tab */
 .tab {
@@ -141,13 +127,30 @@ img.rounded {
     display: none;
 }
 
-span{
+span {
     display: block;
 }
 
-.button {
-     /* Green */
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Scroll-bar */
@@ -159,16 +162,7 @@ span{
   border-radius: 4px;
   background-color: rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-}    
-
-/*@media only screen and (max-width:700px) {
-    .bezetting {
-        flex-basis: calc(100% / 3);
-    }
-    .imp5{
-        display:block;
-    }
-}*/
+}
 
 /* Fake navigation */
 .sidenav {
@@ -202,91 +196,4 @@ span{
 .main {
     float:right;
     width: 88%; /* Same as the width of the sidenav */
-}
-
-/*Bezetting: Width - Importance 5
-/*@media only screen and (max-width:1150px) {
-    .bezetting {
-        flex-basis: calc(100% / 3);
-    }
-    .imp5{
-    	display:block;
-    }
-}
-
-@media only screen and (max-width:900px) {
-    .bezetting {
-        flex-basis: calc(100% / 2);
-        min-height:290px;
-    }
-    .team {
-        height:350px;
-    }
-}
-
-@media only screen and (max-width:640px) {
-    .bezetting {
-        flex-basis: 100%;
-    }
-}*/
-    
-
-/*/\* Bezetting: Width - Importance 4 *\/*/
-/*@media only screen and (max-width: 1040px) {
-    .requirements .short-text {
-        display: block; 
-        margin-top:10px;
-    }
-    .requirements .full-text { display: none; }
-    .imp4{
-    	display:block;
-    }
-}*/
-
-/*/\* Bezetting: Width - Importance 3 *\/*/
-/*@media only screen and (max-width: 800px) {
-    .requirements {font-size: 18px;}
-    .teambezetting {
-        flex-direction: row;
-    }
-    .period {
-        order:0;
-        flex-basis: 100%;
-        font-size:14px;
-        }
-    .minbez {
-        order:1;
-        flex-basis: calc(100% / 2);
-        }
-    .buffer {
-        order:1;
-        flex-basis: calc(100% / 2);
-        }
-    .teambox {order:2;}
-    
-    h1 {font-size: 1.5em;}
-    .imp3{
-    	display:block;
-    }
-}*/
-
-/*/\* Bezetting: Width - Importance 2 *\/*/
-/*@media only screen and (max-width: 430px) {
-    .bezetting {min-height: 0;}
-    .member {min-width: 100px;}
-    .importance3 { display: none; }
-    .imp2{
-    	display:block;
-    }
-}
-
-@media only screen and (max-height: 490px) {
-    .teambezetting {height:80%}
-    /\*.team {
-        flex-direction: column;
-    }*\/
-}*/*/
-
-/*a:contains(18) {
-    
 }

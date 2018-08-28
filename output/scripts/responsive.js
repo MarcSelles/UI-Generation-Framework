@@ -38,14 +38,18 @@ function originalOrCustom(parent, child, marginChild) {
    }).join();
 
 	var childFontSize = originalFontSizeChild[1]
+	var minFontsize;
+	if($( child).hasClass('mainScaling')){minFontsize = 0.8};
+	if($( child).hasClass('noScaling')){minFontsize = 1};
 
-	if(changedElement.includes(child) || childWidth + marginChild > parentWidth && childFontSize > 0.8 * originalFontSizeChild[1]){
+	if(changedElement.includes(child) || childWidth + marginChild > parentWidth && childFontSize > minFontsize * originalFontSizeChild[1]){
 
 		$( parent.parentElement).find('p.' + importance + ',' + 'span.' + importance).each(function( index ) {
 			$(this).css( "font-size", originalFontSizeChild[1] );
 		});
-
-		while ( childWidth + marginChild > parentWidth && childFontSize > 0.8 * originalFontSizeChild[1]) {
+		console.log(childWidth, marginChild, parentWidth)
+		console.log(childFontSize > minFontsize * originalFontSizeChild[1])
+		while ( childWidth + marginChild > parentWidth && childFontSize > minFontsize * originalFontSizeChild[1]) {
 			$( parent.parentElement).find('p.' + importance + ',' + 'span.' + importance).each(function( index ) {
 				var newFontSize = childFontSize - 0.5;
 				$(this).css( 'font-size', newFontSize);
@@ -59,7 +63,7 @@ function originalOrCustom(parent, child, marginChild) {
 		};
 	};
 
-	if (childFontSize <= 0.8 * originalFontSizeChild[1] && childWidth + marginChild > parentWidth) {
+	if (childFontSize <= minFontsize * originalFontSizeChild[1] && childWidth + marginChild > parentWidth) {
 		console.log(importance)
 		for (var i=0, max=20; i < max; i++) {
 			if($( child).hasClass(importance)) {
@@ -93,7 +97,7 @@ window.onload = function() {
 	if (!document.getElementById('firstParent') == 0) {
 		var bezetting = document.getElementById('firstParent');
 		var member = document.getElementById('firstChild');
-		var classBezetting = document.getElementsByClassName('columns');
+		var classBezetting = document.getElementsByClassName('scroll');
 
 		numberOfColumns(bezetting, member, 20, classBezetting)
 	}
@@ -132,7 +136,7 @@ window.onresize = function(event) {
 	if (!document.getElementById('firstParent') == 0) {
 		var bezetting = document.getElementById('firstParent');
 		var member = document.getElementById('firstChild');
-		var classBezetting = document.getElementsByClassName('columns');
+		var classBezetting = document.getElementsByClassName('scroll');
 
 		numberOfColumns(bezetting, member, 20, classBezetting)
 	}

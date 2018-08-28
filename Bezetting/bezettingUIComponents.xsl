@@ -16,7 +16,7 @@
             <xsl:with-param name="style">center</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="title">
-                    <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling<xsl:value-of select="$style"/></xsl:with-param>
                     <xsl:with-param name="content">Teambezetting</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
@@ -31,7 +31,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="$teamNaam"/></xsl:with-param>
-                    <xsl:with-param name="style">teamnaam inline <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">teamnaam inline noScaling<xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -41,11 +41,11 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">center period</xsl:with-param>
+            <xsl:with-param name="style">center</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:formatDate($teamBezettingBeginDatum), ' - '), func:formatDate($teamBezettingEindDatum))"/></xsl:with-param>
-                    <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -58,7 +58,7 @@
             <xsl:with-param name="label">Minimale bezetting</xsl:with-param>
             <xsl:with-param name="value" select="$teamBezettingMin"/>
             <xsl:with-param name="unit">uur</xsl:with-param>
-            <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">mainScaling inline <xsl:value-of select="$style"/></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -69,7 +69,7 @@
             <xsl:with-param name="label">Minimale bezetting</xsl:with-param>
             <xsl:with-param name="value" select="$teamBezettingMin"/>
             <xsl:with-param name="unit">uur</xsl:with-param>
-            <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">mainScaling inline <xsl:value-of select="$style"/></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -96,7 +96,7 @@
             <xsl:with-param name="label">Buffer</xsl:with-param>
             <xsl:with-param name="value" select="$teamBezettingBuffer"/>
             <xsl:with-param name="unit">uur</xsl:with-param>
-            <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">mainScaling inline <xsl:value-of select="$style"/></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -107,7 +107,7 @@
             <xsl:with-param name="label">Buffer</xsl:with-param>
             <xsl:with-param name="value" select="$teamBezettingBuffer"/>
             <xsl:with-param name="unit">uur</xsl:with-param>
-            <xsl:with-param name="style">inline <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">mainScaling inline <xsl:value-of select="$style"/></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -131,10 +131,15 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-        <xsl:call-template name="image">
-            <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,$position)"/>
-            <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,$position), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,$position))"/></xsl:with-param>
-            <xsl:with-param name="style">rounded <xsl:value-of select="$style"/></xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="image">
+                    <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,$position)"/>
+                    <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,$position), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,$position))"/></xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling rounded <xsl:value-of select="$style"/></xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
     
@@ -142,9 +147,14 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-        <xsl:call-template name="text">
-            <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,$position), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,$position))"/></xsl:with-param>
-            <xsl:with-param name="style"><xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,$position), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,$position))"/></xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
     
@@ -152,19 +162,28 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-        <xsl:call-template name="text">
-            <xsl:with-param name="content" select="concat(func:getValue($MEDEWERKER, $AANTALCONTACTUREN,$position), ' uur')"/>
-            <xsl:with-param name="style"><xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content" select="concat(func:getValue($MEDEWERKER, $AANTALCONTACTUREN,$position), ' uur')"/>
+                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
     
     <xsl:function name="func:textFunctie">
         <xsl:param name="position"/>
         <xsl:param name="style"/>
-        
-        <xsl:call-template name="text">
-            <xsl:with-param name="content" select="concat(concat(func:getValue($FUNCTIE, $NIVEAU,$position), ' '), func:getValue($FUNCTIE, $NAAM,$position))"/>
-            <xsl:with-param name="style"><xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content" select="concat(concat(func:getValue($FUNCTIE, $NIVEAU,$position), ' '), func:getValue($FUNCTIE, $NAAM,$position))"/>
+                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
    
@@ -172,10 +191,15 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-       <xsl:call-template name="text">
-           <xsl:with-param name="content" select="func:getValue($ROL, $NAAM,$position)"/>
-           <xsl:with-param name="style"><xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
-       </xsl:call-template>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content" select="func:getValue($ROL, $NAAM,$position)"/>
+                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
+        </xsl:call-template>
    </xsl:function>
   
     <xsl:template name="spanBezetting">
@@ -194,7 +218,7 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">teambezetting flex <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="style">greyBorder flex <xsl:value-of select="$style"/></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
                     <xsl:with-param name="style">vertical</xsl:with-param>
@@ -243,7 +267,7 @@
             <xsl:with-param name="style">teambox vertical <xsl:value-of select="$style"/></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
-                    <xsl:with-param name="style">team flex</xsl:with-param>
+                    <xsl:with-param name="style">oneRow flex</xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>
                     </xsl:with-param>
@@ -258,11 +282,11 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">columns</xsl:with-param>
+            <xsl:with-param name="style">scroll</xsl:with-param>
             <xsl:with-param name="id"><xsl:if test="$position = 1">firstParent</xsl:if></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
-                    <xsl:with-param name="style">member center <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">item member center greyBorder <xsl:value-of select="$style"/></xsl:with-param>
                     <xsl:with-param name="id"><xsl:if test="$position = 1">firstChild</xsl:if></xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>

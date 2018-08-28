@@ -1,0 +1,8 @@
+Vakantie Langdurig Privé Bijzonder Kinder
+Hoi {Medewerker.voornaam} {Medewerker.achternaam}
+Dit jaar heb je recht op calc({Verlofdagen.totaalAantal}/8) vakantiedagen/ {Verlofdagen.totaalAantal} vakantieuren
+Tot nu toe heb je calc(calc({Verlofdagen.totaalAantal} - {Verlofdagen.beschikbaarAantal})/8) vakantiedagen/ calc({Verlofdagen.totaalAantal} - {Verlofdagen.beschikbaarAantal}) vakantieuren opgenomen.
+Dit betekent dat er nog calc({Verlofdagen.beschikbaarAantal}/8) vakantiedagen/ {Verlofdagen.beschikbaarAantal} vakantieuren over zijn.
+input(Vakantie Verlof.datumBegin) - input(Vakantie Verlof.datumEinde)
+In deze periode wordt je aanvraag direct geaccepteerd!
+Aanvragen

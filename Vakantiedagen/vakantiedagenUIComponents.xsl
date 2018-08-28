@@ -29,7 +29,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="textLine">
                     <xsl:with-param name="content">Hoi <xsl:value-of select="concat(concat($medewerkerVoornaam,' '), $medewerkerAchternaam)"/></xsl:with-param>
-                    <xsl:with-param name="style">standaard inline <xsl:value-of select="$style"/> original</xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline <xsl:value-of select="$style"/> original</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -43,7 +43,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="textLine">
                     <xsl:with-param name="content">Dit jaar heb je recht op <b> <xsl:value-of select="$verlofTotaalAantal"/> vakantiedagen / <xsl:value-of select="$verlofTotaalAantal * 8"/> vakantieuren.</b></xsl:with-param>
-                    <xsl:with-param name="style">standaard inline <xsl:value-of select="$style"/> original</xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline <xsl:value-of select="$style"/> original</xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="labelInlineTwoValueTwoUnitTwoLines">
                     <xsl:with-param name="label">Totaal aantal vakantiedagen/-uren</xsl:with-param>
@@ -51,7 +51,7 @@
                     <xsl:with-param name="unit1" select="'dagen'"/>
                     <xsl:with-param name="value2" select="$verlofTotaalAantal * 8"/>
                     <xsl:with-param name="unit2" select="'uren'"/>
-                    <xsl:with-param name="style">standaard inline <xsl:value-of select="$style"/> custom</xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline <xsl:value-of select="$style"/> custom</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -66,7 +66,7 @@
                 <xsl:call-template name="textLine">
                     <xsl:with-param name="content">Tot nu toe heb je <b> <xsl:value-of select="$verlofTotaalAantal - $verlofBeschikbaarAantal"/> vakantiedagen / 
                         <xsl:value-of select="($verlofTotaalAantal - $verlofBeschikbaarAantal) * 8"/> vakantieuren</b> opgenomen.</xsl:with-param>
-                    <xsl:with-param name="style">standaard inline original <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline original <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="labelInlineTwoValueTwoUnitTwoLines">
                     <xsl:with-param name="label">Verbruikt aantal vakantiedagen/-uren</xsl:with-param>
@@ -74,7 +74,7 @@
                     <xsl:with-param name="unit1" select="'dagen'"/>
                     <xsl:with-param name="value2" select="($verlofTotaalAantal - $verlofBeschikbaarAantal) * 8"/>
                     <xsl:with-param name="unit2" select="'uren'"/>
-                    <xsl:with-param name="style">standaard inline custom <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline custom <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -89,7 +89,7 @@
                 <xsl:call-template name="textLine">
                     <xsl:with-param name="content">Dit betekent dat je nog <b> <xsl:value-of select="$verlofBeschikbaarAantal"/> vakantiedagen / 
                         <xsl:value-of select="$verlofBeschikbaarAantal * 8"/> vakantieuren</b> over hebt.</xsl:with-param>
-                    <xsl:with-param name="style">standaard inline original <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline original <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
                 <xsl:call-template name="labelInlineTwoValueTwoUnitTwoLines">
                     <xsl:with-param name="label">Beschikbaar aantal vakantiedagen/-uren:</xsl:with-param>
@@ -97,7 +97,7 @@
                     <xsl:with-param name="unit1" select="'dagen'"/>
                     <xsl:with-param name="value2" select="$verlofBeschikbaarAantal * 8"/>
                     <xsl:with-param name="unit2" select="'uren'"/>
-                    <xsl:with-param name="style">standaard inline custom <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">mainScaling mainBodyFontSize inline custom <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -105,30 +105,37 @@
     
     <xsl:template name="PeriodInputHoliday">
         <xsl:param name="style"/>
+        <!--<label for="from">From</label>
+        <input type="text" id="from" name="from">
         
-        <table>
-            <tr>
-                <th>
-                    <xsl:call-template name="labelValueVertical">
-                        <xsl:with-param name="labels">Begindatum</xsl:with-param>
-                        <xsl:with-param name="values"><input type="text" id="from" class="date" name="from"/></xsl:with-param>
-                    </xsl:call-template>
-                </th>
-                <th>-</th>
-                <th>
-                    <xsl:call-template name="labelValueVertical">
-                        <xsl:with-param name="labels">Einddatum</xsl:with-param>
-                        <xsl:with-param name="values"><input type="text" id="to" name="to"/></xsl:with-param>
-                    </xsl:call-template>
-                </th>
-            </tr>
-        </table>
+            <label for="to">to</label>
+            <input type="text" id="to" name="to">-->
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">vertical</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="labelValueVertical">
+                    <xsl:with-param name="labels">Begindatum</xsl:with-param>
+                    <xsl:with-param name="values"><input type="text" id="from" class="date" name="from"/></xsl:with-param>
+                </xsl:call-template>
+                -
+                <xsl:call-template name="labelValueVertical">
+                    <xsl:with-param name="labels">Einddatum</xsl:with-param>
+                    <xsl:with-param name="values"><input type="text" id="to" name="to"/></xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
     
     <xsl:template name="textAcceptatie">
         <xsl:param name="style"/>
         
-        <p style="display:none" class="{$style}">In deze periode wordt je aanvraag direct geaccepteerd</p>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">vertical</xsl:with-param>
+            <xsl:with-param name="content">
+                <p style="display:none" class="mainScaling {$style}">In deze periode wordt je aanvraag direct geaccepteerd</p>
+            </xsl:with-param>
+        </xsl:call-template>
+        
     </xsl:template>
     
     <xsl:template name="submitButtonAanvragen">
@@ -143,9 +150,9 @@
     <xsl:template name="spanForm">
         <xsl:param name="content"/>
         
-        <form>
+        <div>
             <xsl:copy-of select="$content"/>
-        </form>
+        </div>
     </xsl:template>
     
     <xsl:template name="spanContent">

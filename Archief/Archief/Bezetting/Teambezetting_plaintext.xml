@@ -1,0 +1,45 @@
+<rst>
+<header>
+	<relations>
+			<rel name="antithesis" type="rst"/>
+			<rel name="background" type="rst"/>
+			<rel name="cause" type="rst"/>
+			<rel name="circumstance" type="rst"/>
+			<rel name="concession" type="rst"/>
+			<rel name="condition" type="rst"/>
+			<rel name="contrast" type="multinuc"/>
+			<rel name="contrast" type="rst"/>
+			<rel name="elaboration" type="rst"/>
+			<rel name="evaluation" type="rst"/>
+			<rel name="evidence" type="rst"/>
+			<rel name="joint" type="multinuc"/>
+			<rel name="justify" type="rst"/>
+			<rel name="motivation" type="rst"/>
+			<rel name="preparation" type="rst"/>
+			<rel name="purpose" type="rst"/>
+			<rel name="restatement" type="multinuc"/>
+			<rel name="restatement" type="rst"/>
+			<rel name="result" type="rst"/>
+			<rel name="sequence" type="multinuc"/>
+			<rel name="solutionhood" type="rst"/>
+		</relations>
+</header>
+<body>
+		<group id="15" type="span"/>
+		<segment id="1" parent="15">Teambezetting</segment>
+		<segment id="2" parent="15">{Team.naam}</segment>
+		<group id="14" type="span"/>
+		<!-- <segment id="2" parent="14" relname="sequence">MBI students</segment> --> 
+		<segment id="3" parent="14" relname="sequence">{Teambezetting.datumBegin} - {Teambezetting.datumEinde}</segment>
+		<group id="12" type="multinuc" parent="14" relname="sequence"/>
+		<segment id="4" parent="12" relname="sequence">Minimale Bezetting:{Teambezetting.minimaleBezetting} uur</segment>
+		<segment id="5" parent="12" relname="sequence">Buffer: {Teambezetting.buffer} uur</segment>
+		<group id="13" type="multinuc" parent="14" relname="sequence" minEntities="1" maxEntities="40" multiplicityId="1" />
+		<segment id="6" parent="13" relname="sequence">Medewerker.foto</segment>
+		<segment id="7" parent="13" relname="sequence">{Medewerker.naam}</segment>
+		<segment id="8" parent="13" relname="sequence">{Medewerker.aantalContacturen} uur</segment>
+		<group id="11" type="multinuc" parent="13" relname="sequence"/>
+		<segment id="9" parent="11" relname="joint">{Functie.niveau} {Functie.naam}</segment>
+		<segment id="10" parent="11" relname="joint">{Rol.naam}</segment>
+  </body>
+</rst>

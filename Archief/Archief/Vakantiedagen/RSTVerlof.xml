@@ -1,0 +1,42 @@
+<rst>
+<header>
+	<relations>
+			<rel name="antithesis" type="rst"/>
+			<rel name="background" type="rst"/>
+			<rel name="cause" type="rst"/>
+			<rel name="circumstance" type="rst"/>
+			<rel name="concession" type="rst"/>
+			<rel name="condition" type="rst"/>
+			<rel name="contrast" type="multinuc"/>
+			<rel name="contrast" type="rst"/>
+			<rel name="elaboration" type="rst"/>
+			<rel name="evaluation" type="rst"/>
+			<rel name="evidence" type="rst"/>
+			<rel name="joint" type="multinuc"/>
+			<rel name="justify" type="rst"/>
+			<rel name="motivation" type="rst"/>
+			<rel name="preparation" type="rst"/>
+			<rel name="purpose" type="rst"/>
+			<rel name="restatement" type="multinuc"/>
+			<rel name="restatement" type="rst"/>
+			<rel name="result" type="rst"/>
+			<rel name="sequence" type="multinuc"/>
+			<rel name="solutionhood" type="rst"/>
+		</relations>
+</header>
+<body>
+		<segment id="1" >Vakantie Langdurig Privé Bijzonder Kinder</segment>
+		<group id="9" type="span"/>
+		<group id="10" type="multinuc" parent="9" relname="sequence"/>
+		<segment id="2" parent="10" relname="sequence">Hoi {Medewerker.voornaam} {Medewerker.achternaam}</segment>
+		<segment id="3" parent="10" relname="sequence">Dit jaar heb je recht op calc({Verlofdagen.totaalAantal}/8) vakantiedagen/ {Verlofdagen.totaalAantal} vakantieuren</segment>
+		<segment id="4" parent="10" relname="sequence">Tot nu toe heb je calc(calc({Verlofdagen.totaalAantal} - {Verlofdagen.beschikbaarAantal})/8) vakantiedagen/ calc({Verlofdagen.totaalAantal} - {Verlofdagen.beschikbaarAantal}) vakantieuren opgenomen.</segment>
+		<segment id="5" parent="10" relname="sequence">Dit betekent dat er nog calc({Verlofdagen.beschikbaarAantal}/8) vakantiedagen/ {Verlofdagen.beschikbaarAantal} vakantieuren over zijn.</segment>
+
+		<group id="11" type="multinuc" parent="9" relname="sequence"/>
+		<segment id="6" parent="11" relname="sequence">input(Vakantie Verlof.datumBegin) - input(Vakantie Verlof.datumEinde)</segment>
+		<segment id="7" parent="6" relname="result">In deze periode wordt je aanvraag direct geaccepteerd!</segment>
+		<segment id="8" parent="11" relname="sequence">Aanvragen</segment>
+		
+  </body>
+</rst>

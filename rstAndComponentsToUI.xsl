@@ -59,7 +59,6 @@
                             <xsl:variable name="firstChild" select="$childs[1]/text()"/>
                             <xsl:variable name="class" select="substring-before($firstChild,'.')"/>
                             <xsl:variable name="attribute" select="substring-after($firstChild,'.')"/>
-                            <xsl:variable name="numberOfInstances" select="count($childs)"/>
                             <xsl:variable name="numberOfInstances" select="count($elementRoot[@name= $class]/ownedAttribute[@name = $attribute]/value)"/>
                             <xsl:call-template name="rstTemplate">
                                 <xsl:with-param name="id" select="$id"/>
