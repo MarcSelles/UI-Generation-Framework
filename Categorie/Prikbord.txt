@@ -1,4 +1,0 @@
-Prikbord
-Kies uw categorie
-{Categorie.toegankelijkheid} - {Categorie.naam}
-{Categorie.samenvatting}
