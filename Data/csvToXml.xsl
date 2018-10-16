@@ -7,15 +7,16 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <!--  Import data (csv)  -->
     <xsl:param name="csv-encoding" as="xs:string" select="'iso-8859-1'"/>
-    <xsl:param name="csv-uri" as="xs:string" select="'file:///Users/marcselles/Master/Thesis/Transformation/data.csv'"/>
+    <xsl:param name="csv-uri" as="xs:string" select="'../data.csv'"/>
     
-<!--    <xsl:variable name="test" select="substring-before(concat($pText,'/'),'.')"/> . -->
-    
+    <!--  Transform the csv-file into xml and store xml in variable  -->
     <xsl:variable name="csv2xml">
         <xsl:choose>
             <xsl:when test="unparsed-text-available($csv-uri, $csv-encoding)">
                 <xsl:variable name="csv" select="unparsed-text($csv-uri, $csv-encoding)"/>
+                
                 <!--Get Header-->
                 <xsl:variable name="header-tokens" as="xs:string*">
                     <xsl:analyze-string select="$csv" regex="\r\n?|\n">
@@ -25,15 +26,19 @@
                             </xsl:if>
                         </xsl:non-matching-substring>
                     </xsl:analyze-string>
-                </xsl:variable>                    
+                </xsl:variable>      
+                
+                <!-- Create xml -->
                 <xsl:analyze-string select="$csv" regex="\r\n?|\n">
                     <xsl:non-matching-substring>
                         <xsl:if test="not(position()=1)">
                             <data>
+                                <!-- 
+                                    The name of each node is the columnname of the csv.
+                                    The value of these nodes will be the data itself 
+                                -->
                                 <xsl:for-each select="tokenize(.,';')">
                                     <xsl:variable name="pos" select="position()"/>
-    <!--                                <xsl:variable name="header" select="substring-before($header-tokens[$pos],'.')"/>
-                                    <xsl:value-of select="concat($pos, $header)"/>-->
                                     <xsl:element name="{$header-tokens[$pos]}">
                                         <xsl:value-of select="."/>
                                     </xsl:element>

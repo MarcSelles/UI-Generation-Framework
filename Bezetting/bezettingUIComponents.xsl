@@ -9,6 +9,8 @@
     
     <xsl:output method="html" />
     
+    <!-- All UI components, containing the UI elements -->
+    
     <xsl:template name="titleTeambezetting">
         <xsl:param name="style"/>
         
@@ -16,7 +18,7 @@
             <xsl:with-param name="style">center</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="title">
-                    <xsl:with-param name="style">inline noScaling<xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling mainTitleFontSize<xsl:value-of select="$style"/></xsl:with-param>
                     <xsl:with-param name="content">Teambezetting</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
@@ -31,7 +33,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="$teamNaam"/></xsl:with-param>
-                    <xsl:with-param name="style">teamnaam inline noScaling<xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">teamnaam inline noScaling mainSubTitleFontSize <xsl:value-of select="$style"/></xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -77,7 +79,7 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">center requirements horizontal2</xsl:with-param>
+            <xsl:with-param name="style">center largeBodyFontSize horizontal2</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="labelValueUnitInlineMinBezetting">
                     <xsl:with-param name="style" select="concat($style, ' original')"/>
@@ -115,7 +117,7 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">center requirements horizontal2</xsl:with-param>
+            <xsl:with-param name="style">center largeBodyFontSize requirements horizontal2</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="labelValueUnitInlineBuffer">
                     <xsl:with-param name="style" select="concat($style, ' original')"/>
@@ -152,7 +154,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,$position), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,$position))"/></xsl:with-param>
-                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling smallBodyFontSize <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -167,7 +169,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="concat(func:getValue($MEDEWERKER, $AANTALCONTACTUREN,$position), ' uur')"/>
-                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling smallBodyFontSize <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -181,7 +183,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="concat(concat(func:getValue($FUNCTIE, $NIVEAU,$position), ' '), func:getValue($FUNCTIE, $NAAM,$position))"/>
-                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling smallBodyFontSize <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -196,7 +198,7 @@
             <xsl:with-param name="content">
                 <xsl:call-template name="text">
                     <xsl:with-param name="content" select="func:getValue($ROL, $NAAM,$position)"/>
-                    <xsl:with-param name="style">inline noScaling <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
+                    <xsl:with-param name="style">inline noScaling smallBodyFontSize <xsl:value-of select="$style"/> memberFontSize</xsl:with-param>
                 </xsl:call-template>
             </xsl:with-param>
         </xsl:call-template>
@@ -219,6 +221,7 @@
         
         <xsl:call-template name="item">
             <xsl:with-param name="style">greyBorder flex <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="id">content</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
                     <xsl:with-param name="style">vertical</xsl:with-param>
@@ -282,7 +285,7 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">scroll</xsl:with-param>
+            <xsl:with-param name="style">scroll columns</xsl:with-param>
             <xsl:with-param name="id"><xsl:if test="$position = 1">firstParent</xsl:if></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
@@ -297,11 +300,20 @@
         
     </xsl:template>
     
-    <xsl:template name="emptySpan">
+    <xsl:template name="spanFunctionRole">
         <xsl:param name="content"/>
-        <xsl:copy-of select="$content"/>
+        <xsl:param name="style"/>
+        
+        <xsl:call-template name="item">
+            <xsl:with-param name="style"></xsl:with-param>
+            <xsl:with-param name="id"></xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:copy-of select="$content"/>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:template>
     
+    <!-- Map the id of the RST elements with the right UI component (containing the UI element) -->
     <xsl:template name="rstTemplate">
         <xsl:param name="contents"/>
         <xsl:param name="id"/>
@@ -351,7 +363,7 @@
                 <xsl:copy-of select="func:textRol($position, $importance)"/>
             </xsl:when>
             <xsl:when test="$id = '11'">
-                <xsl:call-template name="emptySpan">
+                <xsl:call-template name="spanFunctionRole">
                     <xsl:with-param name="content" select="$contents"/>
                 </xsl:call-template>
             </xsl:when>
@@ -379,6 +391,7 @@
                     <xsl:with-param name="style" select="$importance"/>
                 </xsl:call-template>
             </xsl:when>
+            <!-- To handle multiplicity, a multiplicityId is used -->
             <xsl:when test="$multiplicityId = '1'">
                 <xsl:call-template name="spanMedewerker">
                     <xsl:with-param name="content" select="$contents"/>

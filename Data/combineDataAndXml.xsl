@@ -12,9 +12,10 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
-    
-    
-    <!-- Identity transform -->
+    <!-- 
+        Take domain model as import and go through each node.
+        Check for each node if the node matches the patch in the templates below.
+    -->
     <xsl:template match="@* | node()">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
@@ -22,6 +23,10 @@
     </xsl:template>
     
     <xsl:template match="packagedElement[@name = $MEDEWERKER]/ownedAttribute[@name = $ID]/*">
+        <!--  
+            Each value of the xml containing the data (variable csv2xml)
+            is stored in the right node of the domain model 
+        -->
         <xsl:for-each select="$csv2xml/data/Medewerker.ID">
             <xsl:if test=". != ''">
                 <value><xsl:value-of select="."/></value>
@@ -387,6 +392,15 @@
     
     <xsl:template match="packagedElement[@name = 'Categorie']/ownedAttribute[@name = 'samenvatting']/*">
         <xsl:for-each select="$csv2xml/data/Categorie.samenvatting">
+            <xsl:if test=". != ''">
+                <value><xsl:value-of select="."/></value>
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:copy-of select="."/>
+    </xsl:template>
+    
+    <xsl:template match="packagedElement[@name = 'Categorie']/ownedAttribute[@name = 'toegankelijkheid']/*">
+        <xsl:for-each select="$csv2xml/data/Categorie.toegankelijkheid">
             <xsl:if test=". != ''">
                 <value><xsl:value-of select="."/></value>
             </xsl:if>

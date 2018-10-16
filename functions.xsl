@@ -8,9 +8,9 @@
     <xsl:output method="html" /> 
     
     <!-- 
-        Transformeer een datum van de vorm ddmmyyyy naar dd-mm-yyyy.
-        @param date:    Datum in de vorm 'ddmmyyyy'
-        @return:        Datum in de vorm 'dd-mm-yyyy'
+        Transform a date from ddmmyyyy to dd-mm-yyyy
+        @param date:    Date in format 'ddmmyyyy'
+        @return:        Date in format 'dd-mm-yyyy'
     -->
     <xsl:function name="func:formatDate">
         <xsl:param name="date"/>
@@ -23,10 +23,10 @@
     </xsl:function>
     
     <!-- 
-        Haal een waarde uit de xml die in een attribuut van een element is opgeslagen.
-        @param element:     Het hoofd element
-        @param attribute:   De attribute waar de waarde in opgeslagen is
-        @return:            De waarde van het attribuut
+        Retrieve the value of a attricute of a class in the domain model
+        @param element:     Class
+        @param attribute:   Attribute
+        @return:            Value of the attribute
     -->
     <xsl:function name="func:getValue">
         <xsl:param name="element"/>
@@ -36,21 +36,12 @@
         <xsl:value-of select="$elementRoot[@name=$element]/ownedAttribute[@name = $attribute]/value[$position]"/>
     </xsl:function>
     
-    <xsl:function name="func:checkEmpty">
-        <xsl:param name="id"/>
-        <xsl:param name="importance"/>
-        <xsl:param name="position"/>
-        
-        <xsl:variable name="value">
-            <xsl:call-template name="rstTemplate">
-                <xsl:with-param name="id" select="$id"/>
-                <xsl:with-param name="position" select="$position"/>
-                <xsl:with-param name="importance" select="concat('importance', $importance)"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:value-of select="$value != ''"/>
-    </xsl:function>
-    
+    <!-- 
+        Generate the composite UI component, containing other UI components
+        @param content:     The children of the composite UI component
+        @param style:       Class of the HTML node
+        @param id:          Id of the HTML node
+    -->
     <xsl:template name="item">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
@@ -61,25 +52,7 @@
         </div>
     </xsl:template>
     
-    <!--
-        Bij een groot scherm wordt de volledige text getoond, anders het label en de korte text.
-        Meerdere paragrafen worden onderscheiden door een ;
-        @param fullText:    De volledige text die bij een groot scherm getoond moet worden
-        @param shortText:   De verkleinde text die getoond wordt bij een kleinder scherm
-        @param label:       Het label die boven de verkleinde text komt te staan
-    -->
-    <xsl:template name="fullOrShortText">
-        <xsl:param name="fullText"/>
-        <xsl:param name="shortText"/>
-        <xsl:param name="label"/>
-        <xsl:param name="style"/>
-        
-        <span class="{$style}"><xsl:copy-of select="$fullText"/></span>
-        <span class="{$style}"><b><xsl:copy-of select="$label"/></b></span>
-        <span class="short-text-value {$style}"><xsl:copy-of select="$shortText"/></span>
-  
-    </xsl:template>
-    
+    <!-- Template of the UI component "LabelValueUnitInline" -->
     <xsl:template name="labelValueUnitInline">
         <xsl:param name="label"/>
         <xsl:param name="value"/>
@@ -100,6 +73,7 @@
             <xsl:copy-of select="concat(concat($value, ' '), $unit)"/></p>
     </xsl:template>
     
+    <!-- Template of the UI component "LabelValueUnitTwoLines" -->
     <xsl:template name="labelInlineTwoValueTwoUnitTwoLines">
         <xsl:param name="label"/>
         <xsl:param name="value1"/>
@@ -112,31 +86,48 @@
             <xsl:copy-of select="concat(concat($value1, ' '), $unit1)"/>/ <xsl:copy-of select="concat(concat($value2, ' '), $unit2) "/></span>
     </xsl:template>
     
+    <!-- Template of the UI component "TabMultipleOptions" -->
     <xsl:template name="tabMultipleOptions">
         <xsl:param name="labels"/>
+        <xsl:param name="style"/>
         
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         
         <!-- Tab links -->
-        <div class="tab">
+        
+        <!--<div class="tab">-->
             <xsl:for-each select="$tokenizeLabel">
-                <button class="tablinks"><xsl:value-of select="."/></button>
+                <xsl:choose>
+                    <xsl:when test=". = 'Vakantie'">
+                        <button class="tablink" onclick="openVerlof('{.}', this)" id="defaultOpen">
+                            <span class="inline {$style}"><xsl:value-of select="."/></span>
+                        </button>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <button class="tablink" onclick="openVerlof('{.}', this)">
+                            <span class="inline {$style}"><xsl:value-of select="."/></span>
+                        </button>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:for-each>
-        </div>
+        <!--</div>-->
     </xsl:template>
 
+    <!-- Template of the UI component "DropdownMultipleOptions" -->
     <xsl:template name="dropdownMultipleOptions">
         <xsl:param name="labels"/>
+        <xsl:param name="style"/>
         
         <xsl:variable name="tokenizeLabel" select="tokenize($labels,';')"/>
         
-        <select class="dropdown">
+        <select class="dropdown {$style}" onchange="openVerlof(this, this)">
             <xsl:for-each select="$tokenizeLabel">
                 <option value="{.}"><xsl:value-of select="."/></option>
             </xsl:for-each>
         </select>
     </xsl:template>
     
+    <!-- Template of the UI component "Text" -->
     <xsl:template name="text">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
@@ -144,6 +135,10 @@
         <p class="{$style}"><xsl:copy-of select="$content"/></p>
     </xsl:template>
     
+    <!-- 
+        Template of the UI component "Text" where the text should be represented using HTML node span.
+        TO DO: combine this template with "Text"
+    -->
     <xsl:template name="textLine">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
@@ -151,6 +146,7 @@
         <span class="{$style}"><xsl:copy-of select="$content"/></span>
     </xsl:template>
     
+    <!-- Template of the UI component "Image" -->
     <xsl:template name="image">
         <xsl:param name="source"/>
         <xsl:param name="name"/>
@@ -159,78 +155,21 @@
         <img class="{$style}" src="{$source}" alt="{$name}" width="60%" height="auto"/>
     </xsl:template>
 
-    <xsl:template name="labelValue">
-        <xsl:param name="labels"/>
-        <xsl:param name="values"/>
-        <xsl:param name="importance"/>
-        
-        
-        <p><b><xsl:copy-of select="$labels"/>: </b><xsl:copy-of select="$values"/></p>            
-    </xsl:template>
-    
-    <xsl:template name="labelValueVertical">
-        <xsl:param name="labels"/>
-        <xsl:param name="values"/>        
-        
-        <label><xsl:copy-of select="$labels"/></label><xsl:copy-of select="$values"/>            
-    </xsl:template>
-
+    <!-- Template of the UI component "Button" -->
     <xsl:template name="submitButton">
         <xsl:param name="text"/>
-        <xsl:param name="styleId"/>
-        <xsl:param name="disabled" select="false()"/>
+        <xsl:param name="style"/>
         
-        <xsl:choose>
-            <xsl:when test="$disabled">
-                <input type="submit" value="{$text}"></input>
-            </xsl:when>
-            <xsl:otherwise>
-                <input type="submit" value="{$text}"></input>
-            </xsl:otherwise>
-        </xsl:choose>
+        <input class="{$style}" type="submit" value="{$text}"></input>
         
     </xsl:template>
 
+    <!-- Template of the UI component "Title" -->
     <xsl:template name="title">
         <xsl:param name="content"/>
         <xsl:param name="style"/>
         
         <h1 class="{$style}"><xsl:copy-of select="$content"/></h1>
     </xsl:template>
-
-    <!--<xsl:function name="func:getElementOfPosition">
-        <xsl:param name="position"/>
-        
-        <xsl:call-template name="image">
-            <xsl:with-param name="source" select="func:getValue($MEDEWERKER, $FOTO,position())"/>
-            <xsl:with-param name="name"><xsl:value-of select="concat(concat(func:getValue($MEDEWERKER, $VOORNAAM,position()), ' '), func:getValue($MEDEWERKER, $ACHTERNAAM,position()))"/></xsl:with-param>
-            <xsl:with-param name="importance">position()</xsl:with-param>
-            <xsl:with-param name="style">rounded</xsl:with-param>
-        </xsl:call-template>
-    </xsl:function>-->
-
-
-
-
-    <!-- Back-up -->
-    <!--<xsl:template name="fullOrShortText">
-        <xsl:param name="fullText"/>
-        <xsl:param name="shortText"/>
-        <xsl:param name="label"/>
-        
-        <xsl:variable name="tokenizeFullText" select="tokenize($fullText,';')"/>
-        <xsl:variable name="tokenizeShortText" select="tokenize($shortText,';')"/>
-        <xsl:variable name="tokenizeLabel" select="tokenize($label,';')"/>
-        
-        <xsl:for-each select="$tokenizeFullText">
-            <xsl:variable name="position" select="position()"/>
-            <p>
-                <span class="full-text"><xsl:copy-of select="."/></span>
-                <span class="short-text"><b><xsl:copy-of select="$tokenizeLabel[$position]"/></b></span><br/>
-                <span class="short-text"><xsl:copy-of select="$tokenizeShortText[$position]"/></span>
-            </p>
-        </xsl:for-each>
-        
-    </xsl:template>-->
 
 </xsl:stylesheet>

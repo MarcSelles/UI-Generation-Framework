@@ -9,15 +9,22 @@
     
     <xsl:output method="html" />
     
+    <!-- All UI components, containing the UI elements -->
     <xsl:template name="multipleOptionsVerlofsoort">
         <xsl:param name="style"/>
         
-        <xsl:call-template name="tabMultipleOptions">
-            <xsl:with-param name="labels">Vakantie;Langdurig;Privé;Bijzonder;Kinder</xsl:with-param>
-        </xsl:call-template>
-        
-        <xsl:call-template name="dropdownMultipleOptions">
-            <xsl:with-param name="labels">Vakantie;Langdurig;Privé;Bijzonder;Kinder</xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">flex</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="tabMultipleOptions">
+                    <xsl:with-param name="labels">Vakantie;Langdurig;Privé;Bijzonder;Kinder</xsl:with-param>
+                    <xsl:with-param name="style">original mainScaling mainBodyFontSize vertical <xsl:value-of select="$style"/> </xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="dropdownMultipleOptions">
+                    <xsl:with-param name="labels">Vakantie;Langdurig;Privé;Bijzonder;Kinder</xsl:with-param>
+                    <xsl:with-param name="style">custom mainScaling mainBodyFontSize vertical <xsl:value-of select="$style"/></xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -105,23 +112,22 @@
     
     <xsl:template name="PeriodInputHoliday">
         <xsl:param name="style"/>
-        <!--<label for="from">From</label>
-        <input type="text" id="from" name="from">
         
-            <label for="to">to</label>
-            <input type="text" id="to" name="to">-->
         <xsl:call-template name="item">
             <xsl:with-param name="style">vertical</xsl:with-param>
             <xsl:with-param name="content">
-                <xsl:call-template name="labelValueVertical">
-                    <xsl:with-param name="labels">Begindatum</xsl:with-param>
-                    <xsl:with-param name="values"><input type="text" id="from" class="date" name="from"/></xsl:with-param>
-                </xsl:call-template>
-                -
-                <xsl:call-template name="labelValueVertical">
-                    <xsl:with-param name="labels">Einddatum</xsl:with-param>
-                    <xsl:with-param name="values"><input type="text" id="to" name="to"/></xsl:with-param>
-                </xsl:call-template>
+                <table>
+                    <tr>
+                        <th><label>Begindatum</label></th>
+                        <th></th>
+                        <th><label>Einddatum</label></th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" id="from" class="date" name="from"/></th>
+                        <th>-</th>
+                        <th><input type="text" id="to" name="to"/></th>
+                    </tr>
+                </table>
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
@@ -130,7 +136,7 @@
         <xsl:param name="style"/>
         
         <xsl:call-template name="item">
-            <xsl:with-param name="style">vertical</xsl:with-param>
+            <xsl:with-param name="style">vertical mainBodyFontSize</xsl:with-param>
             <xsl:with-param name="content">
                 <p style="display:none" class="mainScaling {$style}">In deze periode wordt je aanvraag direct geaccepteerd</p>
             </xsl:with-param>
@@ -143,7 +149,7 @@
         
         <xsl:call-template name="submitButton">
             <xsl:with-param name="text">Aanvragen</xsl:with-param>
-            <xsl:with-param name="styleId">button</xsl:with-param>
+            <xsl:with-param name="style">mainBodyFontSize</xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     
@@ -159,7 +165,7 @@
         <xsl:param name="content"/>
         <xsl:param name="style"/>
         
-        <div class="content {$style}">
+        <div id="Vakantie" class="tabcontent {$style}">
             <xsl:copy-of select="$content"/>
         </div>
     </xsl:template>
@@ -176,6 +182,7 @@
         </xsl:call-template>
     </xsl:template>
     
+    <!-- Map the id of the RST elements with the right UI component (containing the UI element) -->
     <xsl:template name="rstTemplate">
         <xsl:param name="contents"/>
         <xsl:param name="id"/>

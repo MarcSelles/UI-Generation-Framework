@@ -4,13 +4,15 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
+    <!-- Classes of the domain model -->
     <xsl:variable name="MEDEWERKER" select="'Medewerker'"/>
     <xsl:variable name="TEAM" select="'Team'"/>
     <xsl:variable name="TEAMBEZETTING" select="'Teambezetting'"/>
     <xsl:variable name="VERLOFDAGEN" select="'Verlofdagen'"/>
     <xsl:variable name="FUNCTIE" select="'Functie'"/>
     <xsl:variable name="ROL" select="'Rol'"/>
-    
+
+    <!-- Attributed of the class Medewerker -->
     <xsl:variable name="ID" select="'ID'"/>
     <xsl:variable name="VOORNAAM" select="'voornaam'"/>
     <xsl:variable name="TUSSENNAMEN" select="'tussennamen'"/>
@@ -41,14 +43,17 @@
     <xsl:variable name="DATUMINFUNCTIE" select="'datumInFunctie'"/>
     <xsl:variable name="HANDTEKENING" select="'handtekening'"/>
     
+    <!-- Attributed of the class Functie -->
     <xsl:variable name="NAAM" select="'naam'"/>
     <xsl:variable name="NIVEAU" select="'niveau'"/>
     
+    <!-- Attributed of the class Verlofdagen -->
     <xsl:variable name="DATUMBEGIN" select="'datumBegin'"/>
     <xsl:variable name="DATUMEINDE" select="'datumEinde'"/>
     <xsl:variable name="MINIMALEBEZETTING" select="'minimaleBezetting'"/>
     <xsl:variable name="BUFFER" select="'buffer'"/>
     
+    <!-- Attributed of the class Vakantieverlof -->
     <xsl:variable name="TOTAALAANTAL" select="'totaalAantal'"/>
     <xsl:variable name="TOTAALBESCHIKBAAR" select="'beschikbaarAantal'"/>
     

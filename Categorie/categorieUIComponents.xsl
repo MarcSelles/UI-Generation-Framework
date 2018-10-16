@@ -9,6 +9,7 @@
     
     <xsl:output method="html" />
     
+    <!-- All UI components, containing the UI elements -->
     <xsl:template name="titleCategorie">
         <xsl:param name="style"/>
         
@@ -43,6 +44,7 @@
         
         <xsl:call-template name="item">
             <xsl:with-param name="style">vertical <xsl:value-of select="$style"/></xsl:with-param>
+            <xsl:with-param name="id">content</xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
                     <xsl:with-param name="style">flex</xsl:with-param>
@@ -58,9 +60,17 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-        <xsl:call-template name="text">
-            <xsl:with-param name="content" select="func:getValue('Categorie', $NAAM,$position)"/>
-            <xsl:with-param name="style"><xsl:value-of select="$style"/></xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content">
+                        <xsl:copy-of select="func:getValue('Categorie', 'toegankelijkheid',$position)"/>
+                        - <xsl:copy-of select="func:getValue('Categorie', $NAAM,$position)"/>
+                    </xsl:with-param>
+                    <xsl:with-param name="style"><xsl:value-of select="$style"/></xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
     
@@ -68,9 +78,14 @@
         <xsl:param name="position"/>
         <xsl:param name="style"/>
         
-        <xsl:call-template name="text">
-            <xsl:with-param name="content" select="func:getValue('Categorie', 'samenvatting',$position)"/>
-            <xsl:with-param name="style"><xsl:value-of select="$style"/></xsl:with-param>
+        <xsl:call-template name="item">
+            <xsl:with-param name="style">center</xsl:with-param>
+            <xsl:with-param name="content">
+                <xsl:call-template name="text">
+                    <xsl:with-param name="content" select="func:getValue('Categorie', 'samenvatting',$position)"/>
+                    <xsl:with-param name="style"><xsl:value-of select="$style"/></xsl:with-param>
+                </xsl:call-template>
+            </xsl:with-param>
         </xsl:call-template>
     </xsl:function>
     
@@ -84,7 +99,7 @@
             <xsl:with-param name="id"><xsl:if test="$position = 1">firstParent</xsl:if></xsl:with-param>
             <xsl:with-param name="content">
                 <xsl:call-template name="item">
-                    <xsl:with-param name="style">item center greyBorder <xsl:value-of select="$style"/></xsl:with-param>
+                    <xsl:with-param name="style">item member center greyBorder <xsl:value-of select="$style"/></xsl:with-param>
                     <xsl:with-param name="id"><xsl:if test="$position = 1">firstChild</xsl:if></xsl:with-param>
                     <xsl:with-param name="content">
                         <xsl:copy-of select="$content"/>
@@ -100,6 +115,7 @@
         <xsl:copy-of select="$content"/>
     </xsl:template>
     
+    <!-- Map the id of the RST elements with the right UI component (containing the UI element) -->
     <xsl:template name="rstTemplate">
         <xsl:param name="contents"/>
         <xsl:param name="id"/>
@@ -135,6 +151,7 @@
                     <xsl:with-param name="content" select="$contents"/>
                 </xsl:call-template>
             </xsl:when>
+            <!-- To handle multiplicity, a multiplicityId is used -->
             <xsl:when test="$multiplicityId = '1'">
                 <xsl:call-template name="spanMultiplicity">
                     <xsl:with-param name="content" select="$contents"/>

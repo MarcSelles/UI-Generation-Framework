@@ -10,15 +10,18 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
-    <xsl:param name="RST" select="document('file:///Users/marcselles/Master/Thesis/Transformation/Bezetting/Teambezetting_plaintext.xml')"/>
+    <!-- Import the RST-file -->
+    <xsl:param name="RST" select="document('Teambezetting_plaintext.xml')"/>
     
+    <!-- Start the process of generating the UI -->
     <xsl:template match="/">
+        <!-- Template spanBezetting will generate the skeleton of the HTML -->
         <xsl:call-template name="spanBezetting">
             <xsl:with-param name="content">
+                <!-- All UI components will be structured using this function -->
                 <xsl:copy-of select="func:rstAndUIComponentsToUI($RST)"/>
             </xsl:with-param>
         </xsl:call-template>
     </xsl:template>
-    
 
 </xsl:stylesheet>

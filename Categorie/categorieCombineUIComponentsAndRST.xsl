@@ -10,12 +10,16 @@
     <xsl:output indent="yes"/>
     <xsl:strip-space elements="*"/>
     
+    <!-- Import the RST-file -->
     <xsl:param name="RST" select="document('file:///Users/marcselles/Master/Thesis/Transformation/Categorie/RSTPrikbord.xml')"/>
     
+    <!-- Start the process of generating the UI -->
     <xsl:template match="/">
+        <!-- Template genericStructure will generate the skeleton of the HTML -->
         <xsl:call-template name="genericStructure">
             <xsl:with-param name="title">Categorie</xsl:with-param>
             <xsl:with-param name="content">
+                <!-- All UI components will be structured using this function -->
                 <xsl:copy-of select="func:rstAndUIComponentsToUI($RST)"/>
             </xsl:with-param>
         </xsl:call-template>
